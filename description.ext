@@ -143,6 +143,11 @@ class CfgTaskDescriptions {
 		title = "Eliminate Command Vehicle";
 		marker = "Eliminate";
 	};
+	class DestoryMortar {
+		description = "Destroy enemy mortar position";
+		title = "Destroy Mortar Position";
+		marker = "Destroy";
+	};
 };
 
 
@@ -153,6 +158,7 @@ class ThunderboltConfig {
 		"O_Soldier_LAT_F", "O_Soldier_AA_F", "O_Soldier_AR_F", "O_Soldier_AR_F", "O_Soldier_AR_F", "O_Soldier_AR_F", "O_Soldier_F", "O_Soldier_F", "O_Soldier_F", "O_Soldier_F", "O_Soldier_F", "O_Soldier_F", "O_Soldier_F"};
 		TransportHeloClasses[] = {"O_Heli_Light_02_unarmed_F","O_Heli_Light_02_unarmed_F", "O_Heli_Transport_04_covered_F", "O_Heli_Transport_04_bench_F"};
 		AttackHeloClasses[] = {"O_Heli_Light_02_F", "O_Heli_Light_02_F", "O_Heli_Light_02_F", "O_Heli_Light_02_F", "O_Heli_Light_02_F" , "O_Heli_Attack_02_F"};
+		MineClasses[] = {"APERSMine","APERSMine","APERSBoundingMine"};
 	};
 	
 	class MissionTypes {
@@ -172,6 +178,14 @@ class ThunderboltConfig {
 			VehicleInit = "_this call TB_fnc_initCV";
 			PatrolCount = 1;
 		};
+		/*
+		class DestroyMortar : DestroyCV {
+			descClass = "DestoryMortar";
+			VehicleTypes[] = {"O_Mortar_01_F"};
+			//TODO: add mortar functionality to spawned mortar
+			VehicleInit = "";
+		};
+		*/
 	};
 };
 

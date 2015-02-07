@@ -15,8 +15,12 @@ _sPos = [];
 		_sPos set [count _sPos, _x select 0];
 	};
 }forEach _positions;
+
 //debug
-{
-	(createMarker [str(_forEachIndex), _x]) setMarkerType "mil_dot";
-}forEach _sPos;
+if DEBUG then {
+	{
+		(createMarker [str(_forEachIndex), _x]) setMarkerType "mil_dot";
+	}forEach _sPos;
+};
+
 _sPos;
