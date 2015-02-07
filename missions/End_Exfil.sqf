@@ -1,1 +1,0 @@
-[true, "Exfil", [format ["Escape From %1", worldName], "Exfil", "Exfil"], getMarkerPos _marker, "assigned"] call BIS_fnc_taskCreate;
