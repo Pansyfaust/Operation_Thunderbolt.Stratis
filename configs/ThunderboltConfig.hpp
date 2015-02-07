@@ -26,6 +26,7 @@ class MissionTypes
         VehicleInit = "";
         PatrolCount = 1;
     };
+
     class DestroyCV
     {
         descClass = "DestroyCV";
@@ -34,5 +35,13 @@ class MissionTypes
         VehicleCount = "1";
         VehicleInit = "_this call TB_fnc_initCV";
         PatrolCount = 1;
+    };
+
+    class DestroyMortar : DestroyCV
+    {
+        descClass = "DestoryMortar";
+        VehicleTypes[] = {"O_Mortar_01_F"};
+        //TODO: add mortar functionality to spawned mortar
+        VehicleInit = "";
     };
 };

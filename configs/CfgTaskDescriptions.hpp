@@ -11,3 +11,10 @@ class DestroyCV
     title = "Eliminate Command Vehicle";
     marker = "Eliminate";
 };
+
+class DestoryMortar
+{
+    description = "Destroy enemy mortar position";
+    title = "Destroy Mortar Position";
+    marker = "Destroy";
+};

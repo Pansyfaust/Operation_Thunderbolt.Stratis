@@ -23,12 +23,12 @@ fnc_CreateMines = {
     _input1 = _this select 1;
     _input2 = _this select 2;
     _quantity = _this select 3;
-    _isRect = if (count _this > 4) then {_this select 4} else {False};
+    _isRect = if (count _this > 4) then {_this select 4} else {false};
     //0: Everywhere, 1: Roads Only, 2: Excluding Roads
     _roadMode = if (count _this > 5) then {_this select 5} else {0};
     _multiplier = if (count _this > 6) then {_this select 6} else {2};
     //ATMine,APERSTripMine,SLAMDirectionalMine
-    _mines = if (count _this > 7) then {_this select 7} else {["APERSMine","APERSMine","APERSBoundingMine"]};
+    _mines = if (count _this > 7) then {_this select 7} else {[(missionConfigFile >> "ThunderboltConfig" >> "classNames"),"MineClasses",[]] call BIS_fnc_returnConfigEntry};
     _count = 0;
     _mineList = [];
 
@@ -74,7 +74,7 @@ fnc_SpawnMines = {
     _psn = ([_list,300,500,2] call fnc_findPos) select 0;
 
     if (count _psn > 0) then {
-        _mineList = [_psn, 0, 100 + random 50, 50 + random 50, False, 2] call fnc_CreateMines;
+        _mineList = [_psn, 0, 100 + random 50, 50 + random 50, false, 2] call fnc_CreateMines;
         [_mineList,_psn] spawn fnc_LoopMines;
     };
 };
