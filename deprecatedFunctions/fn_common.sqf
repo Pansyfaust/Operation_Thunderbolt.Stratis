@@ -1,4 +1,3 @@
-//FUTURE: dedicated server probably doesnt need to keep most of these functions in memory
 fnc_SetPlayer = {
     private ["_className","_action"];
     scopeName "main";
@@ -66,7 +65,7 @@ fnc_UpdateWeather = {
         //Temporary solution until setOvercast works with clouds enabled
         [_over, _fog] spawn {
             skipTime 1;
-            sleep 1;             
+            sleep 1;
             skipTime -1;
             0 setFog (_this select 1);
             10e10 setOvercast (_this select 0);
@@ -75,27 +74,3 @@ fnc_UpdateWeather = {
     };
 };
 
-/*fnc_EH_Put = {
-    private ["_item","_count"];
-    _item = _this select 1;
-    _count = 0;
-
-    if (_item isKindOf "ReammoBox_F") exitWith {};
-    if (_item isKindOf "Man") exitWith {};
-    if (_item isKindOf "AllVehicles") exitWith {};
-
-    while {!isNull _item AND _count < 2} do {
-        _count = _count + 1;
-        sleep 5;
-    };
-    deleteVehicle _item;
-};*/
-
-fnc_RespawnTime = {
-    setPlayerRespawnTime 60;
-    while {!CanRespawn} do {
-        [format ["<t size='0.8' shadow='1'>Cannot respawn until objective cleared</t>"],0,-(safezoneH-3.2)/2,1,0,0] spawn bis_fnc_dynamicText;
-        if (playerRespawnTime < 3) then {setPlayerRespawnTime 3};
-        sleep 0.01;
-    };
-};

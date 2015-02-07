@@ -1,5 +1,4 @@
 private ["_grp","_color","_posn","_seed","_i","_tgt"];
-if !DEBUG exitWith {};
 _grp = _this select 0;
 _color = _this select 1;
 _posn = getposATL (leader _grp);

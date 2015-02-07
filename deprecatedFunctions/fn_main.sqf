@@ -73,25 +73,6 @@ fnc_CreateTrigger = {
     _trigger
 };
 
-fnc_DebugMarker = {
-    private ["_psn","_type","_color","_size","_name","_text","_marker"];
-
-    if !DEBUG exitWith {};
-    _psn = _this select 0;
-    _type = _this select 1;
-    _color = _this select 2;
-    _size = if (count _this > 3) then {_this select 3} else {1};
-    _name = if (count _this > 4) then {_this select 4} else {random 100000};
-    _text = if (count _this > 5) then {_this select 5} else {""};
-
-    _marker = createMarker [format["%1",_name],_psn];
-    _marker setMarkerShape "ICON";
-    _marker setMarkerType _type;
-    _marker setMarkerColor _color;
-    _marker setMarkerSize [_size,_size];
-    _marker setMarkerText format [" %1",_text];
-};
-
 fnc_MeanVelocity = {
     private ["_list","_count","_useDir","_mean_vel","_magnitude","_total_x","_total_y","_vel","_mean_x","_mean_y"];
     _list = _this select 0;
@@ -125,49 +106,6 @@ fnc_MeanVelocity = {
     //Any negative return is an error
     [_mean_vel,_magnitude]
 };
-
-//[POSITION, DIRECTION, MIN, max, z offset, uniform?] call fnc_NearPoint;
-fnc_NearPoint = {
-    private ["_psn","_dir","_min","_max","_set_z","_isUniform","_radius","_set_x","_set_y"];
-  
-    _psn = _this select 0;
-    if (typeName _psn == "OBJECT") then {_psn = getposATL _psn};
-    _dir = _this select 1;
-    _min = _this select 2;
-    _max = if (count _this > 3) then {(_this select 3) - _min} else {0};
-    _set_z = if (count _this > 4) then {_this select 4} else {0};
-    _isUniform = if (count _this > 5) then {_this select 5} else {True};
-    
-    _radius = if (_isUniform) then {_min + _max * sqrt (random 1)} else {_min + random _max};
-    _set_x = (sin _dir) * _radius;
-    _set_y = (cos _dir) * _radius;
-    
-    [(_psn select 0) + _set_x, (_psn select 1) + _set_y, _set_z]
-};
-
-/*fnc_CleanArea = {
-    private ["_area","_radius","_check","_list","_return"];
-
-    _area = _this select 0;
-    _radius = _this select 1;
-    _check = [_area, _radius + 1000] call fnc_CheckPlayers;
-    _return = False;
-
-    if (count _check == 0) then {
-        _list = nearestObjects [_area,["ReammoBox",
-                                       "SoldierEB",
-                                       "Car_F",
-                                       "Ship_F",
-                                       "Bag_Base"],
-                                       _radius];
-    
-        {{deleteVehicle _x} forEach (crew _x) + [_x]} forEach _list;
-        _return = True;
-    };
-
-    //Returns True if success, False if failed
-    _return
-};*/
 
 fnc_MissionMarker = {
     private ["_tgt","_isSupply","_color","_size","_psn","_marker"];

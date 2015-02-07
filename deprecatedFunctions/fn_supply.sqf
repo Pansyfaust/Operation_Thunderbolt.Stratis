@@ -1,3 +1,5 @@
+// This file is deprecated 
+
 #define SUPPLY_STOCK [ \
     [["chemlight_red",4],["chemlight_yellow",4],["chemlight_blue",4],["chemlight_green",4]], \
     ["chemlight_red",8], \
