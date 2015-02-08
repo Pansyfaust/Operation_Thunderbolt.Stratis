@@ -11,7 +11,7 @@ class TB
     class Players
     {
         file = "functions\players";
-        class getPlayerClusters {}; // Dummy
+        class getClusters {}; // Done
         class getClusterVector {}; // Done
         class isAwayFromPlayers {}; // WIP
     };
@@ -41,7 +41,7 @@ class TB
     class Spawn
     {
         file = "functions\spawn";
-        class spawnAirAssault {};
+        class spawnAirAssault {}; // Dummy
     };
 
     // Functions to assign orders to groups (create waypoints, land, unload troops, fire mortar etc)
@@ -49,6 +49,8 @@ class TB
     class Group
     {
         file = "functions\group";
+        class generateWaypoints {};
+        class getTargets {}; // Done
     };
 
     // These functions are only executed if DEBUG is defined

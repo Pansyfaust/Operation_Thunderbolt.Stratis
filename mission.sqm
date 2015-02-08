@@ -16,7 +16,8 @@ class Mission
 		"A3_Air_F_Heli_Light_01",
 		"A3_Air_F_Heli_Light_02",
 		"A3_Boat_F_Boat_Armed_01",
-		"a3_map_stratis"
+		"a3_map_stratis",
+		"A3_Characters_F_INDEP"
 	};
 	addOnsAuto[]=
 	{
