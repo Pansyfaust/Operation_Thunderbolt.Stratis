@@ -12,7 +12,7 @@ class TB
     {
         file = "functions\players";
         class getPlayerClusters {}; // Dummy
-        class getClusterVector {}; // Dummy
+        class getClusterVector {}; // Done
         class isAwayFromPlayers {}; // WIP
     };
 
@@ -23,6 +23,7 @@ class TB
         class offMapPos {}; // WIP
         class isObscuredPos {}; // Dummy
         class randomMapPos {}; // Done
+        class findNearClearPos {}; // Dummy
     };
 
     // Functions to generate tasks now that we've found good spots
@@ -34,12 +35,17 @@ class TB
     };
 
     // Functions to spawn units
+    // BIS already has some relevant functions so lets try to use them as much as possible
+    // BIS_fnc_spawnGroup, BIS_fnc_spawnVehicle
+    // createVehicleCrew command spawns config default crew for vehicles (including side!)
     class Spawn
     {
         file = "functions\spawn";
+        class spawnAirAssault {};
     };
 
     // Functions to assign orders to groups (create waypoints, land, unload troops, fire mortar etc)
+    // BIS also has functions for these but they're pretty basic/shitty
     class Group
     {
         file = "functions\group";

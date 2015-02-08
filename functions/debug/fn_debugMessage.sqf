@@ -8,7 +8,7 @@
 if (isNull player) exitWith {};
 
 private "_msg";
-_msg = "DEBUG: " + _this;
+_msg = "TB Debug: " + _this;
 
 //Using customChat in the future looks nicer, but more troublesome
 //player customChat [debugChannel, _this];
