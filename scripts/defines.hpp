@@ -1,7 +1,7 @@
 #include "macros.hpp"
 
 // Comment out to disable debug mode
-#define DEBUG
+//#define DEBUG
 
 
 #ifdef DEBUG
@@ -14,7 +14,9 @@
     #define DEBUG_GIZMO(NAME,PSN,COLOR)
 #endif
 
-#define AI_SIDE opfor
+#define PLAYER_SIDES blufor
+
+#define AI_SIDES opfor, independent
 #define AI_SLEEP 5
 
 #define GAME_SLEEP 30
