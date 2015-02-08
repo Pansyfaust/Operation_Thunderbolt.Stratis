@@ -14,9 +14,9 @@
     #define DEBUG_GIZMO(NAME,PSN,COLOR)
 #endif
 
-#define PLAYER_SIDES blufor
+#define PLAYER_SIDES blufor // Placeholder
 
-#define AI_SIDES opfor, independent
+#define AI_SIDES opfor, independent  // Placeholder
 #define AI_SLEEP 5
 
 #define GAME_SLEEP 30
