@@ -5,6 +5,7 @@ class TB
     {
         file = "functions\vehicle";
         class resupplyVehicle {}; // WIP
+	class getMagazines {}; // Done
     };
 
     // Functions to interpret player data to help the AI make decisions
@@ -63,5 +64,6 @@ class TB
     };
     
     // What's this for pansy?
+	//Absolutely nothing friend.
     class Scripts {};
 };
