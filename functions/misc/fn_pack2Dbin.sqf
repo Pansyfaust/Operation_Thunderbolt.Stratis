@@ -24,7 +24,7 @@ _yBox = (_elements select 0) select 1;
 		if (_leftCornerY <= _yBox ) then {
 			_check = true;
 			{
-				if ((_x select 0 < _leftCornerX) && {_x select 1 > _leftCornerY}) exitWith {
+				if ((_x select 0 > (_corner select 0)) && {_x select 1 > _leftCornerY}) exitWith {
 					_check = false;
 				};
 			}forEach _leftCorners;
@@ -41,7 +41,7 @@ _yBox = (_elements select 0) select 1;
 		if (_leftCornerY <= _yBox) then {
 			_check = true;
 			{
-				if ((_x select 0 > _leftCornerX) && {_x select 1 > _leftCornerY}) exitWith {
+				if ((_x select 0 > (_corner select 0)) && {_x select 1 > _leftCornerY}) exitWith {
 					_check = false;
 				};
 			}forEach _leftCorners;
