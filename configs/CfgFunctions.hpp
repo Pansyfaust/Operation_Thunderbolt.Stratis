@@ -29,6 +29,8 @@ class TB
         class isAwayFrom {}; // Done
         class randomPosBox {}; // Dummy
         class randomPosCircle {}; // Dummy
+        class getPerimeterBox {}; // Dummy
+        class getPerimeterCircle {}; // Dummy
     };
 
     class Misc {
@@ -52,7 +54,8 @@ class TB
     {
         file = "functions\spawn";
         class spawnAirAssault {}; // Dummy
-        class spawnMines {}; // Dummy
+        class spawnMines {}; // Done
+        class spawnObjects {}; // Done
     };
 
     // Functions to assign orders to groups (create waypoints, land, unload troops, fire mortar etc)
