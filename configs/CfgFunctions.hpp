@@ -27,6 +27,11 @@ class TB
         class findNearClearPos {}; // Dummy
     };
 
+	class Misc {
+		file = "functions\misc";
+		class pack2Dbin {}; //WIP
+	};
+	
     // Functions to generate tasks now that we've found good spots
     class Tasks
     {
