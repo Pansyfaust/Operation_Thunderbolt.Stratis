@@ -1,0 +1,3 @@
+/*
+    splits an array of units into one array of vehicles and another array of soldiers
+*/

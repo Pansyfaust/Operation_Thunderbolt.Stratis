@@ -62,6 +62,7 @@ class TB
         file = "functions\group";
         class generateWaypoints {};
         class getTargets {}; // Done
+        class sortVehicleOrMan {}; // Dummy
     };
 
     // Functions to help edit loadouts
