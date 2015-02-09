@@ -27,3 +27,5 @@
 #define PRIMARY_WEP 0
 #define SECONDARY_WEP 1
 #define HANDGUN_WEP 2
+
+#define MINES [(missionConfigFile >> "ThunderboltConfig" >> "classNames"),"MineClasses",[]] call BIS_fnc_returnConfigEntry
