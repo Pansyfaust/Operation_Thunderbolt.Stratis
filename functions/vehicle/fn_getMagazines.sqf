@@ -11,6 +11,6 @@ _class = (_class >> "Turrets");
 // Recursion to retrieve all magazines from turret
 for "_i" from 0 to _i < count _class do
 {
-	_mags = _mags + ((_class select _i) call _fncGetMags);
+	_mags = _mags + ((_class select _i) call TB_fnc_getMagazines);
 };
 _mags
