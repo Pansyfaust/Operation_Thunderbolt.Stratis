@@ -13,8 +13,6 @@ _points = [_this, 0, [], [[]]] call BIS_fnc_param;
 _objectTypes = [_this, 1, [], [[]]] call BIS_fnc_param;
 _dirScript = [_this, 2, {random 360}, [{}]] call BIS_fnc_param;
 
-
-
 _objects = [];
 
 {
@@ -28,7 +26,7 @@ _objects = [];
     {
         _psn = _x;
         _dir = call _dirScript;
-    }
+    };
     
     _object = createVehicle [_objectTypes call BIS_fnc_selectRandom, _x, [], 0, "NONE"]; // Replace with a weighted random system in future
     _object setDir _dir;
