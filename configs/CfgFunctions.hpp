@@ -5,7 +5,7 @@ class TB
     {
         file = "functions\vehicle";
         class resupplyVehicle {}; // WIP
-	class getMagazines {}; // Done
+    class getMagazines {}; // Done
     };
 
     // Functions to interpret player data to help the AI make decisions
@@ -27,11 +27,11 @@ class TB
         class findNearClearPos {}; // Dummy
     };
 
-	class Misc {
-		file = "functions\misc";
-		class pack2Dbin {}; //WIP
-	};
-	
+    class Misc {
+        file = "functions\misc";
+        class pack2Dbin {}; //WIP
+    };
+    
     // Functions to generate tasks now that we've found good spots
     class Tasks
     {
@@ -48,6 +48,7 @@ class TB
     {
         file = "functions\spawn";
         class spawnAirAssault {}; // Dummy
+        class spawnMines {}; // Dummy
     };
 
     // Functions to assign orders to groups (create waypoints, land, unload troops, fire mortar etc)
@@ -76,8 +77,4 @@ class TB
         class debugMarker {}; // Done
         class debugMessage {}; // Done
     };
-    
-    // What's this for pansy?
-	//Absolutely nothing friend.
-    class Scripts {};
 };
