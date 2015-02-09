@@ -11,6 +11,16 @@
     akp: rectangular, or hollow box minefields are ok too, but can be added later
 */
 
+/*akp: _mineTypes = [(missionConfigFile >> "ThunderboltConfig" >> "classNames"),"MineClasses",[]] call BIS_fnc_returnConfigEntry;
+akp: i dont like this, just accept an argument
+akp: you can only have one set of mine types
+akp: cant plant AT mines on roads etc
+akp: also you need to check for water and roads
+akp: the old function did that  http://cdn.steamcommunity.com/economy/emoticon/summerufo 
+akp: it's best to seperate the points generator into a function of its own in map functions
+akp: so we can recycle it for virtual artillery*/
+
+
 _pos = [_this, 0, [0,0,0], [[]], 3] call BIS_fnc_param;  
 _minR = [_this, 1, [0], 0] call BIS_fnc_param;
 _maxR = [_this, 2, [0], 0] call BIS_fnc_param;

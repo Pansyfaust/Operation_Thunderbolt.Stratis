@@ -27,6 +27,8 @@ class TB
         class randomMapPos {}; // Done
         class findNearClearPos {}; // Done
         class isAwayFrom {}; // Done
+        class randomPosBox {}; // Dummy
+        class randomPosCircle {}; // Dummy
     };
 
     class Misc {
