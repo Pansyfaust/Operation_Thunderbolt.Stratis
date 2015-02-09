@@ -20,3 +20,11 @@
 #define AI_SLEEP 5
 
 #define GAME_SLEEP 30
+
+#define MUZZLE_TYPE 101
+#define OPTIC_TYPE 201
+#define SIDE_TYPE 301
+
+#define PRIMARY_WEP 0
+#define SECONDARY_WEP 1
+#define HANDGUN_WEP 2

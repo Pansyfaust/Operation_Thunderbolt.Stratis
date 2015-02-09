@@ -59,6 +59,15 @@ class TB
         class getTargets {}; // Done
     };
 
+    // Functions to help edit loadouts
+    class Loadout
+    {
+        file = "functions\loadout";
+        class removeAccessories {};
+        class removeAll {};
+        class removeNVG {};
+    };
+
     // These functions are only executed if DEBUG is defined
     class Debug
     {
