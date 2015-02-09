@@ -1,8 +1,6 @@
 #include "macros.hpp"
 
-// Comment out to disable debug mode
-//#define DEBUG
-
+//#define DEBUG // Comment out to disable debug mode
 
 #ifdef DEBUG
     #define DEBUG_MSG(MSG) [MSG, "TB_fnc_debugMessage"] spawn BIS_fnc_MP;
@@ -14,6 +12,7 @@
     #define DEBUG_GIZMO(NAME,PSN,COLOR)
 #endif
 
+// Script values
 #define PLAYER_SIDES blufor // Placeholder
 
 #define AI_SIDES opfor, independent  // Placeholder

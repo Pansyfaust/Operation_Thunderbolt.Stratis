@@ -8,13 +8,14 @@ class TB
     class getMagazines {}; // Done
     };
 
-    // Functions to interpret player data to help the AI make decisions
-    class Players
+    // Functions to interpret object data to help the AI make decisions
+    class Cluster
     {
-        file = "functions\players";
+        file = "functions\cluster";
+        class getClusterCenter {}; // Done
+        class getClusterRadius {}; // Done
         class getClusters {}; // Done
         class getClusterVector {}; // Done
-        class isAwayFromPlayers {}; // WIP
     };
 
     // Functions to find spots on a map to spawn stuff now what we know where players are going
@@ -24,7 +25,8 @@ class TB
         class offMapPos {}; // WIP
         class isObscuredPos {}; // Dummy
         class randomMapPos {}; // Done
-        class findNearClearPos {}; // Dummy
+        class findNearClearPos {}; // Done
+        class isAwayFrom {}; // Done
     };
 
     class Misc {
