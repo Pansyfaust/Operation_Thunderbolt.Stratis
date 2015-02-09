@@ -13,7 +13,7 @@
 
 private ["_data","_eps","_minPoints","_clusters","_index"];
 _data = _this select 0;
-_maxDistance = _this select 1;
+_maxDistance = _this select 1; // 50m is the max range of STHUD
 _maxDistance = _maxDistance ^ 2; // Square it so we don't need to sqr distance checks
 _minPoints = 0; // Not implemented, we don't need to differentiate between noise and clusters yet
 
@@ -56,7 +56,7 @@ _fnc_expandCluster =
             // Add this neighbor to the current cluster
             (_clusters select _index) pushBack _x;
         };*/
-    } forEach _nearPoints;
+    } count _nearPoints;
 };
 
 // Can this be more optimized?
@@ -74,7 +74,7 @@ _fnc_regionQuery =
         {
             _points pushBack _x;
         };
-    } forEach _data;
+    } count _data;
     _points
 };
 
@@ -107,11 +107,11 @@ _fnc_regionQuery =
         // Check for neighbours of this point's neighbors and add them
         [_x, _nearPoints] call _fnc_expandCluster;
     };
-} forEach _data;
+} count _data;
 
 // Remove everyone's visited status
 {
     _x setVariable ["_unvisited", nil];
-} forEach _data;
+} count _data;
 
 _clusters

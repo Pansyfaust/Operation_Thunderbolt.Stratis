@@ -11,4 +11,4 @@ _class = configFile >> "CfgVehicles" >> typeOf _vehicle;
 
 _vehicle setFuel 1;
 _vehicle setVehicleAmmo 0;
-{_vehicle addMagazine _x} forEach (_class call TB_fnc_getMagazines);
+{_vehicle addMagazine _x} count (_class call TB_fnc_getMagazines);

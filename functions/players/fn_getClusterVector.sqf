@@ -16,7 +16,7 @@ if (_count > 0) then
 {
     {
         _vector = _vector vectorAdd velocity _x;        
-    } forEach _list;
+    } count _list;
     
     _vector = _vector vectorMultiply (1 / _count);
 };

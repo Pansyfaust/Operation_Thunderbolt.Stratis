@@ -25,6 +25,6 @@ _targets = _unit nearTargets _range;
     {
         _validTargets pushBack _x;
     };
-} foreach _targets;
+} count _targets;
 
 _validTargets
