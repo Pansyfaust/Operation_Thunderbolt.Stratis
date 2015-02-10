@@ -5,15 +5,20 @@
 	
     Return: ARRAY	- one array of soldiers (element 0) and another array of vehicles (element 1)
 */
-_orgArr = = [_this, 0, [], [[]]] call BIS_fnc_param;
+
+_orgArr = [_this, 0, [], [[]]] call BIS_fnc_param;
 _splitArr = [[],[]];
+
 {
 	if (vehicle _x == _x) then {
 		(_splitArr select 0) pushBack _x;
 	} else {
-		if (!(vehicle _x in (_splitArr select 1))) then {
+        // Multiple units can be in the same vehicle! Treat those units as one vehicle
+		if (!(vehicle _x in (_splitArr select 1))) then
+        {
 			(_splitArr select 1) pushBack (vehicle _x);
 		};
 	};
-}forEach _orgArr;
+} count _orgArr;
+
 _splitArr
