@@ -6,6 +6,7 @@
     Return: ARRAY   - one array of soldiers (element 0) and another array of vehicles (element 1)
 */
 
+private ["_orgArr","_splitArr"];
 _orgArr = [_this, 0, [], [[]]] call BIS_fnc_param;
 _splitArr = [[],[]];
 
