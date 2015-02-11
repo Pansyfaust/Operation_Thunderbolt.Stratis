@@ -26,21 +26,21 @@ _unit = [_this, 0] call BIS_fnc_param;
 _types = [_this, 1, [MUZZLE_TYPE, OPTIC_TYPE, SIDE_TYPE], [[]]] call BIS_fnc_param;
 _weapons = [_this, 2, [PRIMARY_WEP, SECONDARY_WEP, HANDGUN_WEP], [[]]] call BIS_fnc_param;
 
-if (PRIMARY_WEP in _weapons)
+if (PRIMARY_WEP in _weapons) then
 {
     {
         if (getNumber CONFIG_PATH in _types) then {_unit removePrimaryWeaponItem _x};
     } count primaryWeaponItems _unit;
 };
 
-if (SECONDARY_WEP in _weapons)
+if (SECONDARY_WEP in _weapons)then
 {
     {
         if (getNumber CONFIG_PATH in _types) then {_unit removeSecondaryWeaponItem _x};
     } count secondaryWeaponItems _unit;
 };
 
-if (HANDGUN_WEP in _weapons)
+if (HANDGUN_WEP in _weapons) then
 {
     {
         if (getNumber CONFIG_PATH in _types) then {_unit removeHandgunItem _x};
