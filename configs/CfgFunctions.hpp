@@ -36,6 +36,8 @@ class TB
     class Misc {
         file = "functions\misc";
         class pack2Dbin {}; //WIP
+        class enumParser {};
+        class getPos {}; // Done
     };
     
     // Functions to generate tasks now that we've found good spots
@@ -84,5 +86,6 @@ class TB
         class debugGizmo {}; // Done
         class debugMarker {}; // Done
         class debugMessage {}; // Done
+        class debugNATO {}; // Done
     };
 };
