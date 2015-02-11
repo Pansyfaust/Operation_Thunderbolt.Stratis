@@ -6,6 +6,10 @@ _layer = "akpBlack" call bis_fnc_rscLayer;
 _layer cutText ["", "BLACK FADED", 10e10]; // Can we use cutTitle?
 0 fadeSound 0;
 
+#ifdef DEBUG
+    execVM "scripts\debugLoop.sqf";
+#endif
+
 // Wait for the player object to exist then disable him
 waitUntil {!isNull player};
 player enableSimulation false;
@@ -36,3 +40,6 @@ sleep 0.5;
 _layer cutText ["", "BLACK IN", 0];
 sleep 1;
 //_side execVM "scripts\typeText_init.sqf";
+
+//call BIS_fnc_VRFadeIn
+//call BIS_fnc_VRFadeOut
