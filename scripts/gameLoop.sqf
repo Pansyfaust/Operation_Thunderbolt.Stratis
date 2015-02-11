@@ -27,7 +27,7 @@ WHILETRUE
 
     // Delete groups with no units
     {
-        if (count units _x == 0) then {deleteGroup _x}
+        if (units _x isEqualTo []) then {deleteGroup _x}
     } forEach allGroups;
 
     DEBUG_MSG("Game Loop Awake")
