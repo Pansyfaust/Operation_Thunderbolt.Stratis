@@ -13,7 +13,7 @@ _mean = [0,0,0];
 
 {
     _count = _count + 1;
-    _mean = vectorAdd getPosWorld _x;
+    _mean = _mean vectorAdd getPosWorld _x;
 } count _list;
 
 // Avoid dividing by zero

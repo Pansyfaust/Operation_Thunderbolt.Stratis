@@ -18,7 +18,7 @@ _radius = 0;
     _psn = getPosWorld _x;
     _psn resize 2; // 2D Position
     _distance = _psn distance _center;
-    if (_distance > _radius)
+    if (_distance > _radius) then
     {
         _radius = _distance;
     };

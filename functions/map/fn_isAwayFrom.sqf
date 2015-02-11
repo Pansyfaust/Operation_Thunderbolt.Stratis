@@ -19,16 +19,16 @@ _psn resize 2; // 2D Position
 
 {
     private ["_point","_radius"];
-    if (typeName _x == typeName [])
+    if (typeName _x == typeName []) then
     {
         _point = [_x, 0] call BIS_fnc_param;
         _radius = [_x, 1, 0, [0]] call BIS_fnc_param;
     }
     else
     {
-        _point = _x
+        _point = _x;
         _radius = 0;
-    }
+    };
 
     if (_psn distance _point < _distance + _radius) exitWith {_isAway = false};
 } count _objects;
