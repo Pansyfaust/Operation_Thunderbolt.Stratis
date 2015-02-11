@@ -15,7 +15,7 @@ private "_timeOfDay";
 _timeOfDay = paramsarray select 0;
 _timeOfDay = if (_timeOfDay == -1) then
 {
-    [1 + floor random 365, random 1440] // Random day of the year, random minute (24*60=1440)
+    [1 + floor random 365, floor random 24, floor random 60] // Random day/hour/minute of the year
 }
 else
 {
@@ -49,9 +49,5 @@ publicVariable "Use_NV";
 
 
 // Start game loops
-execVM "scripts\aiLoop.sqf";
+//execVM "scripts\aiLoop.sqf";
 execVM "scripts\gameLoop.sqf";
-
-#ifdef DEBUG
-    execVM "scripts\debugLoop.sqf";
-#endif
