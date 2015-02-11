@@ -24,7 +24,7 @@ _return = objNull;
     _value = _value + (_x select 1);
     if (_value > _sum) exitWith
     {
-        _x select 0;
+        _return = _x select 0;
     };
 } count _array;
 

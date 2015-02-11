@@ -24,12 +24,6 @@ WHILETRUE
     // Should we give players a mission?
         // Assign mission
 
-
-    // Delete groups with no units
-    {
-        if (units _x isEqualTo []) then {deleteGroup _x}
-    } forEach allGroups;
-
     DEBUG_MSG("Game Loop Awake")
     sleep GAME_SLEEP;
 };
