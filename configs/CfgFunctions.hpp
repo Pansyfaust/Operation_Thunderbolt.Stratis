@@ -33,11 +33,13 @@ class TB
         class getPerimeterCircle {}; // Dummy
     };
 
-    class Misc {
+    class Misc
+    {
         file = "functions\misc";
         class pack2Dbin {}; //WIP
         class enumParser {};
         class getPos {}; // Done
+        class weightedRandom {}; // Done
     };
     
     // Functions to generate tasks now that we've found good spots
