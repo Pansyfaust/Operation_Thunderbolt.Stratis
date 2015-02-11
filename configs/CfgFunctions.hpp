@@ -87,5 +87,6 @@ class TB
         class debugMarker {}; // Done
         class debugMessage {}; // Done
         class debugNATO {}; // Done
+        class debugNATOUnitSize {}; // Done
     };
 };

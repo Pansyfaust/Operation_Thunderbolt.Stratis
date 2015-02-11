@@ -1,6 +1,6 @@
 #include "macros.hpp"
 
-//#define DEBUG // Comment out to disable debug mode
+#define DEBUG // Comment out to disable debug mode
 
 #ifdef DEBUG
     #define DEBUG_MSG(MSG) [MSG, "TB_fnc_debugMessage"] spawn BIS_fnc_MP;
