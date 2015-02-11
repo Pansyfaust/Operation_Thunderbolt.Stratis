@@ -8,7 +8,7 @@
     Return: ANY         - Random element
 */
 
-private ["_array","_sum"];
+private ["_array","_sum","_random","_value","_return"];
 _array = [_this, 0, [], [[]]] call bis_fnc_param;
 _sum = 0;
 
@@ -22,7 +22,7 @@ _value = 0;
 _return = objNull;
 {
     _value = _value + (_x select 1);
-    if (_value > _sum) exitWith
+    if (_value > _random) exitWith
     {
         _return = _x select 0;
     };
