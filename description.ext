@@ -25,12 +25,7 @@ class Header
 
 class CfgTaskDescriptions
 {
-    #include "configs\CfgDebriefing.hpp"
-};
-
-class ThunderboltConfig
-{
-    #include "configs\CfgDebriefing.hpp"
+    #include "configs\CfgTaskDescriptions.hpp"
 };
 
 class CfgDebriefing
@@ -51,4 +46,11 @@ class CfgRespawnTemplates
 class Params
 {
     #include "configs\params.hpp"
+};
+
+class CfgThunderbolt
+{
+    #include "configs\ThunderboltConfig.hpp"
+    #include "configs\thunderbolt\aiPersonality.hpp"
+    #include "configs\thunderbolt\factions.hpp"
 };
