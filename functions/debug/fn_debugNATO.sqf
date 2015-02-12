@@ -1,56 +1,21 @@
-#define BLU_COL [profilenamespace getvariable ['Map_BLUFOR_R',0], \
-                 profilenamespace getvariable ['Map_BLUFOR_G',1], \
-                 profilenamespace getvariable ['Map_BLUFOR_B',1], \
-                 profilenamespace getvariable ['Map_BLUFOR_A',0.8]]
-
-
-#define OPF_COL [profilenamespace getvariable ['Map_OPFOR_R',0], \
-                 profilenamespace getvariable ['Map_OPFOR_G',1], \
-                 profilenamespace getvariable ['Map_OPFOR_B',1], \
-                 profilenamespace getvariable ['Map_OPFOR_A',0.8]]
-
-#define IND_COL [profilenamespace getvariable ['Map_Independent_R',0], \
-                 profilenamespace getvariable ['Map_Independent_G',1], \
-                 profilenamespace getvariable ['Map_Independent_B',1], \
-                 profilenamespace getvariable ['Map_Independent_A',0.8]]
-
-//BIS_fnc_sideColor
-
-#define UNK_COL [1,1,1,0.8]
-
 private ["_group","_icon"];
 _group = [_this,0] call bis_fnc_param;
 _icon = _group getVariable ["TB_debugNATOsymbol", []];
 
 if (_icon isEqualTo []) then
 {
-    private ["_leader","_type","_sidePrefix","_color","_symbol"];
+    private ["_leader","_type","_sidePrefix","_color","_side","_symbol"];
     _leader = leader _group;
     _type = typeOf vehicle _leader;
+    _side = side _group;
+    _color = [_side] call BIS_fnc_sideColor;
 
-    switch (side _group) do
+    _sidePrefix = switch (_side) do
     {
-        case blufor:
-        {
-            _sidePrefix = "b_";
-            _color = BLU_COL;
-        };
-        case opfor:
-        {
-            _sidePrefix = "o_";
-            _color = OPF_COL;
-        };
-        case independent:
-        {
-            _sidePrefix = "n_";
-            _color = IND_COL;
-        };
-        //case civilian: {"c_"};
-        default
-        {
-            _sidePrefix = "n_";
-            _color = UNK_COL;
-        };
+        case blufor: {"b_"};
+        case opfor: {"o_"};
+        case independent: {"n_"};
+        default {"n_"};
     };
     
     _symbol = call {
