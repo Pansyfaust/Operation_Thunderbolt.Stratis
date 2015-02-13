@@ -21,8 +21,8 @@ else
 {
     [157, _timeOfDay * 60] // Fixed date so that lighting is more predictable
 };
-TimeOfDay = _timeOfDay;
-publicVariable "TimeOfDay";
+[_timeOfDay, "BIS_fnc_setDate"] call BIS_fnc_MP;
+DEBUG_MSG("Date: " + str _timeOfDay)
 
 // Broadcast starting weather to players (WIP, weather is not a priority now)
 WeatherMode = paramsarray select 1;
