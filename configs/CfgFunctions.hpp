@@ -67,7 +67,14 @@ class TB
         file = "functions\group";
         class generateWaypoints {};
         class getTargets {}; // Done
-        class sortVehicleOrMan {}; // Dummy
+        class sortVehicleOrMan {}; // Done
+    };
+
+    // Functions to aid the AI commander loop
+    class AI
+    {
+        file = "functions\ai";
+        class getFactionUnits{}; // Dummy
     };
 
     // Functions to help edit loadouts
