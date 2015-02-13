@@ -27,11 +27,11 @@ class Factions
         whitelistCar[] = {};
         blacklistCar[] = {};
 
-        whitelistAPC[] = {};
-        blacklistAPC[] = {};
+        whitelistWheeled[] = {};
+        blacklistWheeled[] = {};
 
-        whitelistIFV[] = {};
-        blacklistIFV[] = {};
+        whitelistTracked[] = {};
+        blacklistTracked[] = {};
 
         whitelistTank[] = {};
         blacklistTank[] = {};
@@ -71,6 +71,10 @@ class Factions
 
         whitelistCASPlane[] = {};
         blacklistCASPlane[] = {};
+
+        // Others
+        APmines[] = {};
+        ATmines[] = {};
     };
 
     class CSAT : Default

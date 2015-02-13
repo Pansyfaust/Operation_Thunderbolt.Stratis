@@ -1,10 +1,10 @@
 /*
-    Search through CfgVehicle and CfgGroup and return every class that is scope=2
+    Search through CfgVehicles and CfgGroups and return every class that is scope=2
     and is part of one of the factions that the argument includes
 
     0: POSITION 2D          - array of STRING faction names
 
-    return: ARRAY           - array of [[CfgGroup classes],[CfgVehicle classes]]
+    return: ARRAY           - array of [[CfgGroups classes],[CfgVehicles classes]]
 */
 
 private ["_factions"];
