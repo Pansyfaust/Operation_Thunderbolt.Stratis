@@ -3,10 +3,10 @@ class Factions
     class Default
     {
         name = "Default";
-        factionClass[] = {"BLU_F"}; // CfgFaction classes, multiple can be used for auto inclusion        
+        factionClass[] = {}; // CfgFaction classes, multiple can be used for auto inclusion        
         findUnits = 0; // Automatically include units that belong to the faction(s), you have to use whitelists otherwise
 
-        // Infantry classes
+        // Infantry
         whitelistInfantry[] = {}; // CfgGroups to always use, does not need to belong to the factionClass[] factions
         blacklistInfantry[] = {}; // These groups will never be included by the auto inclusion
         customInfantry[] = {}; // Array of arrays of infantry classnames for custom groups
@@ -15,10 +15,15 @@ class Factions
         blacklistRecon[] = {};
         customRecon[] = {};
 
-        // Vehicle classes
-        whitelistTruck[] = {};
-        blacklistTruck[] = {};
+        whitelistSniper[] = {};
+        blacklistSniper[] = {};
+        customSniper[] = {};
 
+        whitelistDiver[] = {};
+        blacklistDiver[] = {};
+        customDiver[] = {};
+
+        // Ground Vehicle
         whitelistCar[] = {};
         blacklistCar[] = {};
 
@@ -31,6 +36,7 @@ class Factions
         whitelistTank[] = {};
         blacklistTank[] = {};
 
+        // Support
         whitelistMortar[] = {};
         blacklistMortar[] = {};
 
@@ -40,20 +46,37 @@ class Factions
         whitelistAntiAir[] = {};
         blacklistAntiAir[] = {};
 
+        whitelistSupport[] = {};
+        blacklistSupport[] = {};
+
+        whitelistTransport[] = {};
+        blacklistTransport[] = {};
+
+        // Helicopters
         whitelistTransportHeli[] = {};
         blacklistTransportHeli[] = {};
 
-        whitelistGunship[] = {};
-        blacklistGunship[] = {};
+        whitelistTransportAttackHeli[] = {};
+        blacklistTransportAttackHeli[] = {};
 
+        whitelistAttackHeli[] = {};
+        blacklistAttackHeli[] = {};
 
-        whitelistSupport[] = {};
-        blacklistSupport[] = {};
+        whitelistHeavyHeli[] = {};
+        blacklistHeavyHeli[] = {};
+
+        // Planes
+        whitelistFighterPlane[] = {};
+        blacklistFighterPlane[] = {};
+
+        whitelistCASPlane[] = {};
+        blacklistCASPlane[] = {};
     };
 
     class CSAT : Default
     {
         name = "CSAT";
-        factionClass = "OPF_F";
+        factionClass[] = {"OPF_F"};
+        findUnits = 1;
     };
 };
