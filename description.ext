@@ -52,5 +52,6 @@ class CfgThunderbolt
 {
     #include "configs\ThunderboltConfig.hpp"
     #include "configs\thunderbolt\aiPersonality.hpp"
-    #include "configs\thunderbolt\factions.hpp"
+    #include "configs\thunderbolt\aiComposition.hpp"
+    #include "configs\thunderbolt\aiFactions.hpp"
 };
