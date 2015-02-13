@@ -4,8 +4,6 @@ class TB
     class Vehicle
     {
         file = "functions\vehicle";
-        class resupplyVehicle {}; // WIP
-    class getMagazines {}; // Done
     };
 
     // Functions to interpret object data to help the AI make decisions
