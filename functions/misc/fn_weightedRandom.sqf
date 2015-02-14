@@ -4,9 +4,9 @@
     [["coconut", 189], ["durian", 5.4]] call TB_fnc_weightedRandom; has a 2.777..% chance of returning durian
     [0.55, 0.45] call TB_fnc_weightedRandom; has a 55% chance of returning 0 and 45% chance of returning 1
 
-    0: ARRAY            - Array of array [value, weight] or simply a weight
+    0: ARRAY or NUMBER      - Array of array [value, weight] or simply a weight
 
-    Return: ANY         - Random value or index if no value
+    Return: ANY             - Random value or index if no value
 */
 
 private ["_array","_sum","_random","_weight","_return","_value"];
