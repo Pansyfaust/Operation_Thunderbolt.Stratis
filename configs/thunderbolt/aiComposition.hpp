@@ -3,13 +3,36 @@ class aiComposition
     class Default
     {
         name = "Default";
-        forcePreference[] = {0.35, 0.05, 0.2 ,0.15, 0.05, 0.1, 0.1, 0}; // infantry, recon, motorized, mechanized, armored, heli, mines, naval (WIP)
-        supportPreference[] = {0.4, 0.1, 0.1, 0.1, 0.1, 0.1 ,0.1}; // assist, air assault, paratroops, mortar, artillery, gunship, cas
+        forcePreference[] =
+        {
+            "Infantry", 1,
+            "Diver", 1,
+            "Recon", 1,
+            "Sniper", 1,
+            "Car", 1,
+            "Wheeled", 1,
+            "Tracked", 1,
+            "Armor", 1,
+            "Mortar", 1,
+            "Artillery", 1,
+            "AntiAir", 1,
+            "Support", 1,
+            "Transport", 1,
+            "TransportHeli", 1,
+            "ArmedTransportHeli", 1,
+            "AttackHeli", 1,
+            "HeavyAttackHeli", 1,
+            "FighterPlane", 1,
+            "CASPlane", 1,
+            "ATMines", 1,
+            "APMines", 1
+        };
+        supportPreference[] = {}; // assist, air assault, paratroops, mortar, artillery, gunship, cas
     };
 
     class TEST_COMPOSITION : Default
     {
         name = "Test Composition";
-        forcePreference[] = {1, 0, 0 , 0, 0, 0, 0, 0};
+        forcePreference[] = {"Infantry", 1};
     };
 };

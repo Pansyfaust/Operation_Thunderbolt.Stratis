@@ -6,75 +6,134 @@ class Factions
         factionClass[] = {}; // CfgFaction classes, multiple can be used for auto inclusion        
         findUnits = 0; // Automatically include units that belong to the faction(s), you have to use whitelists otherwise
 
+        class Unit // Abstract class
+        {
+            condition[] = {}; // Conditions to auto include units into this category, if blank, no units will be auto included
+                              // the config entry is passed to the called compiled string
+            cost = 1; // Per man if group of cost of the vehicle without crew
+            isGroup = 0; // 1: use CfgGroups, 0: useCfgVehicles
+            whitelist[] = {}; // CfgGroups/CfgVehicles to always use, does not need to belong to the factionClass[] factions
+            blacklist[] = {}; // These classnames will never be included by the auto inclusion
+            scripts[] = {}; // These functions are run after spawn, group is passed as the parameter
+        };
+
         // Infantry
-        whitelistInfantry[] = {}; // CfgGroups to always use, does not need to belong to the factionClass[] factions
-        blacklistInfantry[] = {}; // These groups will never be included by the auto inclusion
-        customInfantry[] = {}; // Array of arrays of infantry classnames for custom groups
+        class Infantry : Unit
+        {
+            condition[] = {"tolower gettext (_this >> 'simulation') == 'soldier'"};
+            cost = 1; // Per man
+            isGroup = 1;
+        };
 
-        whitelistRecon[] = {};
-        blacklistRecon[] = {};
-        customRecon[] = {};
+        class Diver : Infantry
+        {
+            condition[] += {"gettext (_this >> 'namesound') == 'veh_infantry_diver_s'"};
+            cost = 1.2;
+        };
 
-        whitelistSniper[] = {};
-        blacklistSniper[] = {};
-        customSniper[] = {};
+        class Recon : Infantry
+        {
+            cost = 1.2;
+        };
 
-        whitelistDiver[] = {};
-        blacklistDiver[] = {};
-        customDiver[] = {};
+        class Sniper : Infantry
+        {
+            cost = 1.4;
+        };
 
-        // Ground Vehicle
-        whitelistCar[] = {};
-        blacklistCar[] = {};
+        // Ground Vehicles
+        class Vehicle // Abstract class
+        {
+            crewCost = 1; // Cost of each crew member
+        };
 
-        whitelistWheeled[] = {};
-        blacklistWheeled[] = {};
+        class Car : Vehicle
+        {
+            cost = 2;
+        };
 
-        whitelistTracked[] = {};
-        blacklistTracked[] = {};
+        class Wheeled : Vehicle
+        {
+            cost = 4;
+        };
 
-        whitelistTank[] = {};
-        blacklistTank[] = {};
+        class Tracked : Vehicle
+        {
+            cost = 4;
+        };
+
+        class Armor : Vehicle
+        {
+            cost = 8;
+        };
 
         // Support
-        whitelistMortar[] = {};
-        blacklistMortar[] = {};
+        class Mortar : Vehicle
+        {
+            cost = 4;
+        };
 
-        whitelistArtillery[] = {};
-        blacklistArtillery[] = {};
+        class Artillery : Vehicle
+        {
+            cost = 4;
+        };
 
-        whitelistAntiAir[] = {};
-        blacklistAntiAir[] = {};
+        class AntiAir : Vehicle
+        {
+            cost = 4;
+        };
 
-        whitelistSupport[] = {};
-        blacklistSupport[] = {};
+        class Support : Vehicle
+        {
+            cost = 4;
+        };
 
-        whitelistTransport[] = {};
-        blacklistTransport[] = {};
+        class Transport : Vehicle
+        {
+            cost = 4;
+        };
 
         // Helicopters
-        whitelistTransportHeli[] = {};
-        blacklistTransportHeli[] = {};
+        class TransportHeli : Vehicle
+        {
+            cost = 4;
+        };
 
-        whitelistTransportAttackHeli[] = {};
-        blacklistTransportAttackHeli[] = {};
+        class ArmedTransportHeli : Vehicle
+        {
+            cost = 4;
+        };
 
-        whitelistAttackHeli[] = {};
-        blacklistAttackHeli[] = {};
+        class AttackHeli : Vehicle
+        {
+            cost = 4;
+        };
 
-        whitelistHeavyHeli[] = {};
-        blacklistHeavyHeli[] = {};
+        class HeavyAttackHeli : Vehicle
+        {
+            cost = 4;
+        };
 
         // Planes
-        whitelistFighterPlane[] = {};
-        blacklistFighterPlane[] = {};
+        class FighterPlane : Vehicle
+        {
+            cost = 4;
+        };
 
-        whitelistCASPlane[] = {};
-        blacklistCASPlane[] = {};
+        class CASPlane : Vehicle
+        {
+            cost = 4;
+        };
 
         // Others
-        APmines[] = {};
-        ATmines[] = {};
+        class APMines
+        {
+            cost = 10;
+            whitelist[] = {};
+            blacklist[] = {};
+        };
+
+        class ATMines : APMines {};
     };
 
     class CSAT : Default

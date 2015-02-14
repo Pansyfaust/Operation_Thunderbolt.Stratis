@@ -97,6 +97,14 @@ WHILETRUE
             #define STATE_ALERT 1
             #define STATE_COMBAT 2
         */
+        /*
+        switch (_state) do
+        {
+            case STATE_PATROL: {}; // go patrol
+            case STATE_ALERT: {};
+            case STATE_COMBAT: {}; // go move to detected players
+        };
+        */
         };
     };
 
