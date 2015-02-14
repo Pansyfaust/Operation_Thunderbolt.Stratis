@@ -7,9 +7,9 @@ class aiComposition
         supportPreference[] = {0.4, 0.1, 0.1, 0.1, 0.1, 0.1 ,0.1}; // assist, air assault, paratroops, mortar, artillery, gunship, cas
     };
 
-    class Infantry : Default
+    class TEST_COMPOSITION : Default
     {
-        name = "Infantry";
-        forcePreference[] = {0.8, 0.1, 0 , 0, 0, 0, 0, 0};
+        name = "Test Composition";
+        forcePreference[] = {1, 0, 0 , 0, 0, 0, 0, 0};
     };
 };

@@ -5,12 +5,36 @@
 
 #include "defines.hpp"
 
-private ["_personality","_aiGroups","_state"];
+private ["_personality","_composition","_faction","_aiGroups","_state","_unitsTable"];
 _personality = [_this, 0, "Default", [""]] call BIS_fnc_param;
+_composition = [_this, 1, "Default", [""]] call BIS_fnc_param;
+_faction = [_this, 2, "Default", [""]] call BIS_fnc_param;
+
 _personality = missionConfigFile >> "CfgThunderbolt" >> "aiPersonality" >> _personality;
+_composition = missionConfigFile >> "CfgThunderbolt" >> "aiComposition" >> _composition;
+_faction = missionConfigFile >> "CfgThunderbolt" >> "aiFactions" >> _faction;
+
 _aiGroups = [];
 _state = STATE_PATROL;
 
+// Build a large array of arrays containing units for the faction sorted into categories eg.
+// [[infantry group classnames], [tank classnames]]
+// Must support weighted random
+/*
+
+// check if [_faction, "findUnits"] call BIS_fnc_returnConfigEntry; is true
+    // build classname arrays (check with faction blacklists)
+    TB_fnc_getFactionUnits
+    TB_fnc_getFactionGroups
+    TB_fnc_getFactionVehicles
+
+    // seperate into categories
+
+    // pushBack whitelist into catagories
+
+// put everything neatly into _unitsTable
+_unitsTable = [[]];
+*/
 
 WHILETRUE
 {
@@ -52,40 +76,27 @@ WHILETRUE
     _aiGroups = _aiGroups - [grpNull];
 
 
-    // Can we spawn stuff?
+    // Can we spawn stuff? Check if we have enough points
     //if (call TB_fnc_canWeSpawn) then
     if (true) then
     {
-        // Decide whether to attack an objective, spawn patrols or defend area <PERSONALITY>
-        private "_spawnType"; // Use a NUMBER with #defines
+
+
+        private ["_spawnClassType", "_spawnFunctionType","_spawnClass","_spawnFunction"];
         
-        _spawnType = ([_personality, "forcePreference"] call BIS_fnc_returnConfigEntry) call TB_fnc_weightedRandom;
+        _spawnClassType = ([_composition, "forcePreference"] call BIS_fnc_returnConfigEntry) call TB_fnc_weightedRandom;
+        _spawnFunctionType = ([_personality, "infantrySpawnPreference"] call BIS_fnc_returnConfigEntry) call TB_fnc_weightedRandom;
         
-        switch (_spawnType) do
-        {
-            // If patrol:
-            case SPAWN_PATROL:
-            {
-                // Get player group clusters
-                // Determine player movement
-                // Decide what to spawn <PERSONALITY>
-                // Spawn units at location ahead of players
-            };
+        _spawnClass = [_unitsTable select _spawnClassType] call TB_fnc_weightedRandom;
+        _spawnFunction = _spawnFunctions select _spawnFunctionType;
 
-            case SPAWN_PARADROP: {};
-
-            case SPAWN_WHEELED: {};
-
-            case SPAWN_TRACKED: {};
-
-            case SPAWN_PLANE: {};
-
-            case SPAWN_ARTILLERY: {}:
-
-            case SPAWN_HELI:
-            // Else:
-                // Find a spot to spawn
-                // Move units to objective
+        _group = [_spawnClass] call _spawnFunction;
+        // Order the group to go do something depending on the current state and personality
+        /*
+            #define STATE_PATROL 0
+            #define STATE_ALERT 1
+            #define STATE_COMBAT 2
+        */
         };
     };
 

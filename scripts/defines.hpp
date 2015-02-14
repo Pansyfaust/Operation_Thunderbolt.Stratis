@@ -32,4 +32,14 @@
 #define STATE_ALERT 1
 #define STATE_COMBAT 2
 
-#define MINES [(missionConfigFile >> "ThunderboltConfig" >> "classNames"),"MineClasses",[]] call BIS_fnc_returnConfigEntry
+#define SPAWN_INFANTRY 0
+/*#define SPAWN_RECON
+#define SPAWN_SNIPER
+
+#define SPAWN_CAR
+#define SPAWN_MOTORIZED
+#define SPAWN_MECHANIZED
+#define SPAWN_ARMORED
+#define SPAWN_HELI
+#define SPAWN_MINES
+#define SPAWN_NAVAL*/

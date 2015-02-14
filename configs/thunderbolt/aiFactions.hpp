@@ -83,4 +83,10 @@ class Factions
         factionClass[] = {"OPF_F"};
         findUnits = 1;
     };
+
+    class TEST_FACTION : Default
+    {
+        name = "Test Faction";
+        whitelistInfantry[] = {""};
+    };
 };

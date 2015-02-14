@@ -24,4 +24,10 @@ class aiPersonality
         name = "Cowards";
         morale = 0;
     };
+
+    class TEST_PERSONALITY : Default
+    {
+        name = "Test Personality";
+        infantrySpawnPreference[] = {0, 0, 0, 0, 0};
+    };
 };
