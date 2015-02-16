@@ -7,10 +7,10 @@ class aiPersonality
         forceConcentration = 0.7; // 0: spread out evenly, 1: focus on 1 cluster
         morale = 0.8; // 0: french mode, 1: fight to the death
         
-        infantrySpawnPreference[] = {0.3, 0.4, 0.1, 0.1, 0.1}; // magic, building, road, heli, para
+        /*infantrySpawnPreference[] = {0.3, 0.4, 0.1, 0.1, 0.1}; // magic, building, road, heli, para
         infantrySpawnFallbackOrder[] = {};
         vehicleSpawnPreference[] = {0.05, 0.8, 0.1, 0.05}; // magic, road, slingload, paradrop
-        vehicleSpawnFallbackOrder[] = {};
+        vehicleSpawnFallbackOrder[] = {};*/
     };
 
     class Aggressive : Default
@@ -28,6 +28,5 @@ class aiPersonality
     class TEST_PERSONALITY : Default
     {
         name = "Test Personality";
-        infantrySpawnPreference[] = {0, 0, 0, 0, 0};
     };
 };

@@ -3,12 +3,13 @@ class aiComposition
     class Default
     {
         name = "Default";
+        // When auto including it will check categories from the top down
         forcePreference[] =
         {
-            "Infantry", 1,
             "Diver", 1,
             "Recon", 1,
             "Sniper", 1,
+            "Infantry", 1,
             "Car", 1,
             "Wheeled", 1,
             "Tracked", 1,

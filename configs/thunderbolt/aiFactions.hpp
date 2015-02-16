@@ -1,4 +1,4 @@
-class Factions
+class aiFactions
 {
     class Default
     {
@@ -8,26 +8,29 @@ class Factions
 
         class Unit // Abstract class
         {
-            condition[] = {}; // Conditions to auto include units into this category, if blank, no units will be auto included
-                              // the config entry is passed to the called compiled string
+            condition = "false"; // Conditiono auto include units into this category, if blank, no units will be auto included
+                               // the config entry is passed to the called compiled string
             cost = 1; // Per man if group of cost of the vehicle without crew
-            isGroup = 0; // 1: use CfgGroups, 0: useCfgVehicles
+            isGroup = 0; // 1: use CfgGroups, 0: use CfgVehicles
             whitelist[] = {}; // CfgGroups/CfgVehicles to always use, does not need to belong to the factionClass[] factions
             blacklist[] = {}; // These classnames will never be included by the auto inclusion
-            scripts[] = {}; // These functions are run after spawn, group is passed as the parameter
+
+            spawnMethods[] = {}; // This category may only use the applicable aiSpawnMethods
+            scripts[] = {}; // These functions are run after spawn, group is passed as the parameter            
         };
 
         // Infantry
         class Infantry : Unit
         {
-            condition[] = {"tolower gettext (_this >> 'simulation') == 'soldier'"};
+            condition = "";
             cost = 1; // Per man
             isGroup = 1;
+            spawnMethods[] = {"Magic"};
         };
 
         class Diver : Infantry
         {
-            condition[] += {"gettext (_this >> 'namesound') == 'veh_infantry_diver_s'"};
+            condition = "";
             cost = 1.2;
         };
 
@@ -136,6 +139,13 @@ class Factions
         class ATMines : APMines {};
     };
 
+    class NATO : Default
+    {
+        name = "NATO";
+        factionClass[] = {"BLU_F"};
+        findUnits = 1;
+    };
+
     class CSAT : Default
     {
         name = "CSAT";
@@ -143,9 +153,25 @@ class Factions
         findUnits = 1;
     };
 
+    class AAF : Default
+    {
+        name = "AAF";
+        factionClass[] = {"IND_F"};
+        findUnits = 1;
+    };
+
     class TEST_FACTION : Default
     {
         name = "Test Faction";
-        whitelistInfantry[] = {""};
+        factionClass[] = {"IND_F"};
+
+        class Unit;
+        class Infantry : Unit
+        {
+            condition = "true";
+            cost = 1; // Per man
+            isGroup = 1;
+            whitelist[] = {"OIA_InfSquad"};
+        };
     };
 };

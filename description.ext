@@ -53,4 +53,5 @@ class CfgThunderbolt
     #include "configs\thunderbolt\aiPersonality.hpp"
     #include "configs\thunderbolt\aiComposition.hpp"
     #include "configs\thunderbolt\aiFactions.hpp"
+    #include "configs\thunderbolt\aiSpawning.hpp"
 };
