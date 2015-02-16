@@ -21,11 +21,19 @@ _aiGroups = [];
 _state = STATE_PATROL;
 
 // Build a large array of arrays containing units for the faction sorted into categories eg.
-// [[infantry group classnames], [tank classnames]]
+/*
+[
+    [STRING: category classname, [[classname, cost], ...], weight], ...
+]
+*/
 // Must support weighted random
-_unitsTable = [_composition, _faction] call TB_fnc_getFactionTable;
+//_unitsTable = [_composition, _faction] call TB_fnc_getFactionTable;
 #ifdef DEBUG
-    copyToClipboard str _unitsTable;
+    //copyToClipboard str _unitsTable;
+    _unitsTable =
+    [
+        [_faction >> "Infantry", [[configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfSquad", 8]], 1]
+    ];
 #endif
 
 WHILETRUE
@@ -69,33 +77,37 @@ WHILETRUE
 
 
     // Can we spawn stuff? Check if we have enough points
-    //if (_points > 0) then
-    if (false) then
+    if (_points > 0) then
     {
-        private ["_spawnClassType", "_spawnFunctionType","_spawnClass","_spawnFunction"];
+        DEBUG_MSG("AI trying to spawn")
+        private ["_array","_grp","_spawnCost"];
+        _array = [_unitsTable] call TB_fnc_spawnLogic;
+        _grp = _array select 0;
+        _spawnCost = _array select 1;
         
-        _spawnClassType = ([_composition, "forcePreference"] call BIS_fnc_returnConfigEntry) call TB_fnc_weightedRandom;
-        _spawnFunctionType = ([_personality, "infantrySpawnPreference"] call BIS_fnc_returnConfigEntry) call TB_fnc_weightedRandom;
-        
-        _spawnClass = [_unitsTable select _spawnClassType] call TB_fnc_weightedRandom;
-        _spawnFunction = _spawnFunctions select _spawnFunctionType;
-
-        private ["_group","_cost"];
-        _group = [_spawnClass] call _spawnFunction;
-        // Order the group to go do something depending on the current state and personality
-        /*
-            #define STATE_PATROL 0
-            #define STATE_ALERT 1
-            #define STATE_COMBAT 2
-        */
-        /*
-        switch (_state) do
+        if !(isNull _grp) then 
         {
-            case STATE_PATROL: {}; // go patrol
-            case STATE_ALERT: {};
-            case STATE_COMBAT: {}; // go move to detected players
+            _aiGroups pushBack _grp;
+
+            // Deduct the cost of spawning
+            _points = _points - _spawnCost * _coefficient;
+            DEBUG_MSG( ("AI Spawn success (" + str _points + " points)") )
+
+            // Order the group to go do something depending on the current state and personality
+            /*
+                #define STATE_PATROL 0
+                #define STATE_ALERT 1
+                #define STATE_COMBAT 2
+            */
+            /*
+            switch (_state) do
+            {
+                case STATE_PATROL: {}; // go patrol
+                case STATE_ALERT: {};
+                case STATE_COMBAT: {}; // go move to detected players
+            };
+            */
         };
-        */
     };
 
     DEBUG_MSG("AI Loop Sleep")

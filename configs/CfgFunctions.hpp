@@ -75,6 +75,7 @@ class TB
     {
         file = "functions\ai";
         class getFactionTable {}; //WIP
+        class spawnLogic {}; // Done
     };
 
     // Functions to help edit loadouts

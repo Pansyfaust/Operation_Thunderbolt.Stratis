@@ -1,5 +1,5 @@
 private ["_composition","_faction","_categories","_factionClass"];
-_composition = [_this, 0] call BIS_fnc_param;
+/*_composition = [_this, 0] call BIS_fnc_param;
 _faction = [_this, 1] call BIS_fnc_param;
 
 _categories = [_composition, "forcePreference", []] call BIS_fnc_returnConfigEntry;
@@ -22,6 +22,12 @@ _conditions = [];
             _whitelist = [_category , "whitelist", []] call BIS_fnc_returnConfigEntry;
             _blacklist = [_category , "blacklist", []] call BIS_fnc_returnConfigEntry;
             _condition = [_category , "condition", "false"] call BIS_fnc_returnConfigEntry;
+
+            _isGroup = [_category , "isGroup", 0] call BIS_fnc_returnConfigEntry;
+            if (_isGroup) then
+            {
+
+            };
 
             if (_condition == "") then {_condition = "false"};
             _whitelists pushBack _whitelist;

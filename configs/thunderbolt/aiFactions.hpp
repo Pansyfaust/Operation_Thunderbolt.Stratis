@@ -15,7 +15,7 @@ class aiFactions
             whitelist[] = {}; // CfgGroups/CfgVehicles to always use, does not need to belong to the factionClass[] factions
             blacklist[] = {}; // These classnames will never be included by the auto inclusion
 
-            spawnMethods[] = {}; // This category may only use the applicable aiSpawnMethods
+            spawnMethods[] = {}; // This category may only use the applicable aiSpawning
             scripts[] = {}; // These functions are run after spawn, group is passed as the parameter            
         };
 
@@ -172,6 +172,8 @@ class aiFactions
             cost = 1; // Per man
             isGroup = 1;
             whitelist[] = {"OIA_InfSquad"};
+            spawnMethods[] = {"TEST_SPAWN"};
+            scripts[] = {"hint 'SUCCESS!'"};
         };
     };
 };
