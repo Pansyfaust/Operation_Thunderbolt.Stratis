@@ -74,9 +74,7 @@ class TB
     class AI
     {
         file = "functions\ai";
-        class getFactionUnits{}; // WIP
-        class getFactionGroups{}; // WIP
-        class getFactionVehicles{}; //WIP
+        class getFactionTable {}; //WIP
     };
 
     // Functions to help edit loadouts
