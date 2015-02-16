@@ -9,7 +9,7 @@
 
 private ["_factions", "_units"];
 _factions = [_this, 0, [], [[]]] call BIS_fnc_param;
-_groups = []
+_groups = [];
 _vehicles = [];
 {
 	_groups = _groups + (_x call TB_fnc_getFactionGroups);
