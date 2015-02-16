@@ -21,8 +21,7 @@ player enableSimulation false;
     "RscDisplayOutro",
     "RscDisplayMissionEditor"
 */
-waitUntil {time > 0};
-waitUntil {!(isNull ([] call BIS_fnc_displayMission))};
+
 
 // Setup the player's loadout
 //waitUntil {!isNil "Use_NV"};
@@ -33,6 +32,9 @@ waitUntil {!(isNull ([] call BIS_fnc_displayMission))};
 
 
 // Start the mission. Play some cool effects and stuff
+waitUntil {time > 0};
+waitUntil {!(isNull ([] call BIS_fnc_displayMission))}; // Waituntil the main game display is active
+
 1 fadeSound 1;
 player enableSimulation true;
 ("akpStatic" call bis_fnc_rscLayer) cutRsc ["RscStatic","plain"];

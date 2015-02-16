@@ -5,10 +5,13 @@
 
 #include "defines.hpp"
 
-private ["_personality","_composition","_faction","_aiGroups","_state","_unitsTable"];
+private ["_personality","_composition","_faction","_coefficient","_regen","_points","_aiGroups","_state","_unitsTable"];
 _personality = [_this, 0, "Default", [""]] call BIS_fnc_param;
 _composition = [_this, 1, "Default", [""]] call BIS_fnc_param;
 _faction = [_this, 2, "Default", [""]] call BIS_fnc_param;
+_coefficient = [_this, 3, 0.01, [0]] call BIS_fnc_param;
+_regen = [_this, 4, 0.01, [0]] call BIS_fnc_param;
+_points = 1;
 
 _personality = missionConfigFile >> "CfgThunderbolt" >> "aiPersonality" >> _personality;
 _composition = missionConfigFile >> "CfgThunderbolt" >> "aiComposition" >> _composition;
@@ -20,21 +23,10 @@ _state = STATE_PATROL;
 // Build a large array of arrays containing units for the faction sorted into categories eg.
 // [[infantry group classnames], [tank classnames]]
 // Must support weighted random
-/*
-
-// check if [_faction, "findUnits"] call BIS_fnc_returnConfigEntry; is true
-    // build classname arrays (check with faction blacklists)
-    TB_fnc_getFactionUnits
-    TB_fnc_getFactionGroups
-    TB_fnc_getFactionVehicles
-
-    // seperate into categories
-
-    // pushBack whitelist into catagories
-
-// put everything neatly into _unitsTable
-_unitsTable = [[]];
-*/
+_unitsTable = [_composition, _faction] call TB_fnc_getFactionTable;
+#ifdef DEBUG
+    copyToClipboard str _unitsTable;
+#endif
 
 WHILETRUE
 {
@@ -77,11 +69,9 @@ WHILETRUE
 
 
     // Can we spawn stuff? Check if we have enough points
-    //if (call TB_fnc_canWeSpawn) then
-    if (true) then
+    //if (_points > 0) then
+    if (false) then
     {
-
-
         private ["_spawnClassType", "_spawnFunctionType","_spawnClass","_spawnFunction"];
         
         _spawnClassType = ([_composition, "forcePreference"] call BIS_fnc_returnConfigEntry) call TB_fnc_weightedRandom;
@@ -90,6 +80,7 @@ WHILETRUE
         _spawnClass = [_unitsTable select _spawnClassType] call TB_fnc_weightedRandom;
         _spawnFunction = _spawnFunctions select _spawnFunctionType;
 
+        private ["_group","_cost"];
         _group = [_spawnClass] call _spawnFunction;
         // Order the group to go do something depending on the current state and personality
         /*
@@ -105,7 +96,6 @@ WHILETRUE
             case STATE_COMBAT: {}; // go move to detected players
         };
         */
-        };
     };
 
     DEBUG_MSG("AI Loop Sleep")
