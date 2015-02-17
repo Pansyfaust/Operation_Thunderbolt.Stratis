@@ -1,3 +1,9 @@
+/* Build a large array of arrays containing units for the faction sorted into categories eg.
+[
+    [STRING: category classname, [[CONFIG: config path, NUMBER: cost], ...], NUMBER: weight], ...
+]
+*/
+
 private ["_composition","_faction","_categories","_factionClass"];
 /*_composition = [_this, 0] call BIS_fnc_param;
 _faction = [_this, 1] call BIS_fnc_param;
