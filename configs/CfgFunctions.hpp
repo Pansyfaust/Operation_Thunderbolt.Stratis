@@ -29,6 +29,8 @@ class TB
         class randomPosCircle {}; // Dummy
         class getPerimeterBox {}; // Dummy
         class getPerimeterCircle {}; // Dummy
+
+        class magicPos {};
     };
 
     class Misc
@@ -95,6 +97,7 @@ class TB
         class debugMarker {}; // Done
         class debugMessage {}; // Done
         class debugNATO {}; // Done
-        class debugNATOUnitSize {}; // Done
+        class debugUnitSize {}; // Done
+        class lineToRectangle {}; // Done
     };
 };

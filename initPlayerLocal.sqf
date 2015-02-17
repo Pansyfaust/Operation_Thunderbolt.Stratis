@@ -45,3 +45,7 @@ sleep 1;
 
 //call BIS_fnc_VRFadeIn
 //call BIS_fnc_VRFadeOut
+
+#ifdef DEBUG
+    //[player, 300, 300, 10] execVM "scripts\debugDisplayTest.sqf";
+#endif

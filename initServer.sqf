@@ -52,5 +52,5 @@ publicVariable "Use_NV";
 
 
 // Start game loops
-["TEST_PERSONALITY","TEST_COMPOSITION","TEST_FACTION"] execVM "scripts\aiLoop.sqf"; // Personality, Composition, Faction
+//["TEST_PERSONALITY","TEST_COMPOSITION","TEST_FACTION"] execVM "scripts\aiLoop.sqf"; // Personality, Composition, Faction
 execVM "scripts\gameLoop.sqf";

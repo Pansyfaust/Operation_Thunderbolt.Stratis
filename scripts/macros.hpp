@@ -5,3 +5,5 @@
 #define RANDPARAM(X) floor random ({_x >= 0} count getArray ((missionConfigFile >> "Params") select X >> "values"))
 
 #define CONCAT(X,Y) {X pushBack _x} count Y
+
+#define == isEqualTo
