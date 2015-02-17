@@ -6,7 +6,7 @@ class aiFactions
         factionClass[] = {}; // CfgFaction classes, multiple can be used for auto inclusion        
         findUnits = 0; // Automatically include units that belong to the faction(s), you have to use whitelists otherwise
 
-        class Unit // Abstract class
+        class Category // Abstract class
         {
             condition = "false"; // Conditiono auto include units into this category, if blank, no units will be auto included
                                // the config entry is passed to the called compiled string
@@ -16,11 +16,12 @@ class aiFactions
             blacklist[] = {}; // These classnames will never be included by the auto inclusion
 
             spawnMethods[] = {}; // This category may only use the applicable aiSpawning
-            scripts[] = {}; // These functions are run after spawn, group is passed as the parameter            
+            initScripts[] = {}; // These functions are run after spawn, group is passed as the parameter
+            groupLogic = ""; // This script is run during the aiLoop;
         };
 
         // Infantry
-        class Infantry : Unit
+        class Infantry : Category
         {
             condition = "";
             cost = 1; // Per man
@@ -165,15 +166,15 @@ class aiFactions
         name = "Test Faction";
         factionClass[] = {"IND_F"};
 
-        class Unit;
-        class Infantry : Unit
+        class Category;
+        class Infantry : Category
         {
             condition = "true";
             cost = 1; // Per man
             isGroup = 1;
             whitelist[] = {"OIA_InfSquad"};
             spawnMethods[] = {"TEST_SPAWN"};
-            scripts[] = {"hint 'SUCCESS!'"};
+            initScripts[] = {"hint 'SUCCESS!'"};
         };
     };
 };

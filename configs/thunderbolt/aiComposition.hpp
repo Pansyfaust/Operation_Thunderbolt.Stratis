@@ -6,7 +6,7 @@ class aiComposition
         // When auto including it will check categories from the top down
         forcePreference[] =
         {
-            "Diver", 1,
+            /*"Diver", 1,
             "Recon", 1,
             "Sniper", 1,
             "Infantry", 1,
@@ -26,7 +26,7 @@ class aiComposition
             "FighterPlane", 1,
             "CASPlane", 1,
             "ATMines", 1,
-            "APMines", 1
+            "APMines", 1*/
         };
         supportPreference[] = {}; // assist, air assault, paratroops, mortar, artillery, gunship, cas
     };
