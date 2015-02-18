@@ -42,8 +42,9 @@ addMissionEventHandler ["Draw3D", {
 
     // Display all groups icons and waypoints
     {
-        private "_grp";
+        private ["_grp","_psn"];
         _grp = _x;
+        _psn = getPosVisual formationLeader leader _grp;
 
         // Draw group waypoints
         private ["_waypoints","_positions","_icons","_texts","_current","_color"];
@@ -54,13 +55,25 @@ addMissionEventHandler ["Draw3D", {
             _texts = _waypoints select 3;
             _current = currentWaypoint _grp;
             // Draw paths
-            //{drawLine3D _x} forEach (_waypoints select 1);
+            private "_prevPsn";
+            {
+                if (_forEachIndex > 0) then {
+                    drawLine3D [_x, _prevPsn, WP_DEFAULT_COLOR];
+                };
+                _prevPsn = _x;
+            } forEach (_waypoints select 0);
+
             // Draw icons
             {
-                _color = if (_forEachIndex == _current) then {WP_CURRENT_COLOR} else {WP_DEFAULT_COLOR};
+                _color = if (_forEachIndex == _current) then {
+                    // Draw line from unit leader to current active waypoint
+                    drawLine3D [_psn, _x, WP_CURRENT_COLOR]; WP_CURRENT_COLOR;
+                } else {
+                    WP_DEFAULT_COLOR;
+                };
                 drawIcon3D [_icons select _forEachIndex,
                             _color,
-                            _positions select _forEachIndex,
+                            _x,
                             WP_ICON_SIZE, WP_ICON_SIZE, 0,
                             _texts select _forEachIndex, 2,
                             WP_TEXT_SIZE, DISPLAY_FONT];
@@ -71,8 +84,6 @@ addMissionEventHandler ["Draw3D", {
         private "_grpIcon";
         _grpIcon = _grp getVariable ["TB_debugIcon", []];
         if !(_grpIcon isEqualTo []) then {
-            private "_psn";
-            _psn = getPosVisual formationLeader leader _grp;
             _psn set [2, (_psn select 2) + 3]; // Raise it up a bit
 
             // Draw NATO symbol
@@ -102,23 +113,32 @@ addMissionEventHandler ["Draw3D", {
 
         // Display all groups
         {
-            // Draw group waypoints
-            private ["_grp","_waypoints","_positions","_icons","_texts","_current","_color"];
+            private ["_grp","_psn"];
             _grp = _x;
-            _waypoints = _grp getVariable ["TB_debugWaypoints", []];
+            _psn = getPosVisual formationLeader leader _x;
+
+            // Draw group waypoints
+            private ["_waypoints","_positions","_icons","_texts","_current","_color"];
+            _waypoints = _grp getVariable ["TB_debugWaypoints", []];            
             if !(_waypoints isEqualTo []) then {
                 _positions = _waypoints select 0;
                 _icons = _waypoints select 2;
                 _texts = _waypoints select 3;
                 _current = currentWaypoint _grp;
                 // Draw paths
-                //{drawLine _x} forEach (_waypoints select 1);
+                {_map drawRectangle _x} count (_waypoints select 4);
+
                 // Draw icons
                 {
-                    _color = if (_forEachIndex == _current) then {WP_CURRENT_COLOR} else {WP_DEFAULT_COLOR};
+                    _color = if (_forEachIndex == _current) then {
+                        // Draw line from unit leader to current active waypoint
+                        _map drawLine [_psn, _x, WP_CURRENT_COLOR]; WP_CURRENT_COLOR;
+                    } else {
+                        WP_DEFAULT_COLOR;
+                    };
                     _map drawIcon [_icons select _forEachIndex,
                                    _color,
-                                   _positions select _forEachIndex,
+                                   _x,
                                    WP_ICON_MAP_SIZE, WP_ICON_MAP_SIZE, 0,
                                    _texts select _forEachIndex, 2,
                                    WP_TEXT_MAP_SIZE, DISPLAY_FONT];
@@ -129,9 +149,6 @@ addMissionEventHandler ["Draw3D", {
             private "_grpIcon";
             _grpIcon = _grp getVariable ["TB_debugIcon", []];
             if !(_grpIcon isEqualTo []) then {
-                private "_psn";
-                _psn = getPosVisual formationLeader leader _x;
-
                 // Draw NATO symbol
                 _map drawIcon [_grpIcon select 0, _grpIcon select 1, _psn, ICON_MAP_SIZE,
                     ICON_MAP_SIZE, 0, _grpIcon select 4, 0, TEXT_MAP_SIZE, DISPLAY_FONT];
@@ -223,7 +240,7 @@ WHILETRUE
 
         // Update waypoint icons array
         private ["_grpWaypoints","_waypoints","_wpPositions","_wpTypes","_wpCount"];
-        _grpWaypoints = _grp getVariable ["TB_debugWaypoints", [[],[],[]]];
+        _grpWaypoints = _grp getVariable ["TB_debugWaypoints", [[],[],[],[],[]]];
         _waypoints = waypoints _grp;
         _wpPositions = [];
         _wpTypes = [];
@@ -265,17 +282,20 @@ WHILETRUE
             private "_wpText";
             _wpText = [];
             {                
-                _wpText pushBack format ["%1: %2", _forEachIndex, _wpTypes select _forEachIndex];
+                _wpText pushBack format ["%1: %2", _forEachIndex, _x];
             } forEach _wpTypes;
             _grpWaypoints set [3, _wpText];
 
-            // Rebuild connections
-            /*_wpLines = [];
+            // Rebuild paths
+            private ["_wpPaths","_prevPsn"];
+            _wpPaths = [];
             {
                 if (_forEachIndex > 0) then {
-
+                    _wpPaths pushBack ([_x, _prevPsn, WP_DEFAULT_COLOR] call TB_fnc_lineToRectangle);
                 };
-            } forEach _wpTypes;*/
+                _prevPsn = _x;
+            } forEach _wpPositions;
+            _grpWaypoints set [4, _wpPaths];
 
             _grp setVariable ["TB_debugWaypoints", _grpWaypoints];
         };
