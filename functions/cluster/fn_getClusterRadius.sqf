@@ -8,8 +8,8 @@
 */
 
 private ["_center","_list","_radius"];
-_center = [_this, 0] call BIS_fnc_param;
-_list = [_this, 1] call BIS_fnc_param;
+_center = _this select 0;
+_list = _this select 1;
 
 _radius = 0;
 

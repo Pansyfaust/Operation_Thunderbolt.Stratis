@@ -48,4 +48,5 @@ sleep 1;
 
 #ifdef DEBUG
     //[player, 300, 300, 10] execVM "scripts\debugDisplayTest.sqf";
+    execVM "scripts\debugClusterTest.sqf";
 #endif

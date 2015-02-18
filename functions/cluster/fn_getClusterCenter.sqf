@@ -7,7 +7,7 @@
 */
 
 private ["_list","_count","_mean"];
-_list = [_this, 0] call BIS_fnc_param;
+_list = _this select 0;
 _count = 0;
 _mean = [0,0,0];
 

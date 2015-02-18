@@ -11,7 +11,7 @@
     return: ARRAY            - An array of arrays containing player clusters
 */
 
-private ["_data","_eps","_minPoints","_clusters","_index"];
+private ["_data","_maxDistance","_minPoints","_clusters","_index"];
 _data = _this select 0;
 _maxDistance = _this select 1; // 50m is the max range of STHUD
 _maxDistance = _maxDistance ^ 2; // Square it so we don't need to sqr distance checks
@@ -20,7 +20,7 @@ _minPoints = 0; // Not implemented, we don't need to differentiate between noise
 _index = -1;
 _clusters = [];
 
- _unvisited = "DBSCAN" + str diag_tickTime;
+_unvisited = "DBSCAN" + str diag_tickTime;
 
 // Check for new neighbors and add them to the cluster
 private "_fnc_expandCluster";
@@ -29,10 +29,9 @@ _fnc_expandCluster =
     private ["_object","_nearPoints"];
     _object = _this select 0;
     _nearPoints = _this select 1;
-    
+
     // Add the object to the current cluster
     (_clusters select _index) pushBack _object;
-    systemChat str [_clusters, _index, _object];
 
     // Check the object's neighbors
     {
@@ -56,12 +55,13 @@ _fnc_expandCluster =
             // Add this neighbor to the current cluster
             (_clusters select _index) pushBack _x;
         };*/
+        true
     } count _nearPoints;
 };
 
 // Can this be more optimized?
 private "_fnc_regionQuery";
-_fnc_regionQuery = 
+_fnc_regionQuery =
 {
     private ["_points","_pointPsn","_psn"];
     _points = [_this];
@@ -70,10 +70,10 @@ _fnc_regionQuery =
     {
         _psn = getPosWorld _x;
         _psn set [2, 0];
-        if (_pointPsn distanceSqr _psn <= _eps) then
+        if (_pointPsn distanceSqr _psn <= _maxDistance) then
         {
             _points pushBack _x;
-        };
+        }; true
     } count _data;
     _points
 };
@@ -106,12 +106,12 @@ _fnc_regionQuery =
 
         // Check for neighbours of this point's neighbors and add them
         [_x, _nearPoints] call _fnc_expandCluster;
-    };
+    }; true
 } count _data;
 
 // Remove everyone's visited status
 {
-    _x setVariable ["_unvisited", nil];
+    _x setVariable ["_unvisited", nil]; true
 } count _data;
 
 _clusters
