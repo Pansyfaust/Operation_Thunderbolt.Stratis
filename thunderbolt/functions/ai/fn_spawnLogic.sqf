@@ -15,10 +15,10 @@ _spawnClass = _spawnClassArray select 0;
 _spawnCost = _spawnClassArray select 1;
 
 // Get some information from the category
-private ["_isGroup","_spawnMethods","_scripts"];
+private ["_isGroup","_spawnMethods","_initScripts"];
 _isGroup = [_category, "isGroup", 0] call BIS_fnc_returnConfigEntry; // not used
 _spawnMethods = [_category, "spawnMethods", []] call BIS_fnc_returnConfigEntry;
-_scripts = [_category, "scripts", []] call BIS_fnc_returnConfigEntry;
+_initScripts = [_category, "initScripts", []] call BIS_fnc_returnConfigEntry;
 
 // If we fail, return a null group
 private "_grp";
@@ -37,13 +37,14 @@ _grp = grpNull;
     for "_i" from 1 to _maxAttempts do
     {
         private "_psn";
+        hint str _positionFunction;
         _psn = _size call compile _positionFunction;
         // If we get a position, spawn
-        if !(_psn isEqualTo []) exitWith
+        if (typeName _psn == typeName [] && !(_psn isEqualTo [])) exitWith
         {
             _grp = [_spawnClass, _psn] call compile _spawnFunction;
             // Pass any scripts to the created group
-            {_grp spawn compile _x; true} count _scripts;
+            {_grp spawn compile _x; true} count _initScripts;
             true;
         };
     };

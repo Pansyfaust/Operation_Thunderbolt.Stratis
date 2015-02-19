@@ -9,7 +9,7 @@ private ["_personality","_composition","_faction","_coefficient","_regen","_poin
 _personality = [_this, 0, "Default", [""]] call BIS_fnc_param;
 _composition = [_this, 1, "Default", [""]] call BIS_fnc_param;
 _faction = [_this, 2, "Default", [""]] call BIS_fnc_param;
-_coefficient = [_this, 3, 0.01, [0]] call BIS_fnc_param;
+_coefficient = [_this, 3, 0.04, [0]] call BIS_fnc_param;
 _regen = [_this, 4, 0.01, [0]] call BIS_fnc_param;
 _points = 1;
 
@@ -23,7 +23,14 @@ _state = STATE_PATROL;
 // Build a large array of arrays containing units for the faction sorted into categories eg.
 /*
 [
-    [STRING: category classname, [[classname, cost], ...], weight], ...
+    [
+        NUMBER: weight,
+        STRING: category classname,
+        [[CONFIG: config path, NUMBER: cost], ...],
+        [NUMBER: spawn config array index, ...],
+        [CODE: init scripts, ...],
+        CODE: group logic
+    ], ...
 ]
 */
 // Must support weighted random
@@ -39,6 +46,16 @@ _state = STATE_PATROL;
 WHILETRUE
 {
     DEBUG_MSG("AI Loop Awake")
+
+    // Get player clusters
+    private "_clusters";
+    _clusters = [playableUnits, 50] call TB_fnc_getClusters; // filter for alive/concious?
+    {
+        private ["_center","_radius"];
+        _center = [_x] call TB_fnc_getClusterCenter;
+        _radius = [_center, _x] call TB_fnc_getClusterRadius;
+        _clusters set [_foreachIndex, [_x, [_center, _radius]]];
+    } forEach _clusters;
 
     // Loop through all groups under the AI's control
     {
@@ -77,15 +94,15 @@ WHILETRUE
 
 
     // Can we spawn stuff? Check if we have enough points
-    if (_points > 0) then
+    /*if (_points > 0) then
     {
         DEBUG_MSG("AI trying to spawn")
         private ["_array","_grp","_spawnCost"];
         _array = [_unitsTable] call TB_fnc_spawnLogic;
         _grp = _array select 0;
         _spawnCost = _array select 1;
-        
-        if !(isNull _grp) then 
+
+        if !(isNull _grp) then
         {
             _aiGroups pushBack _grp;
 
@@ -94,21 +111,14 @@ WHILETRUE
             DEBUG_MSG( ("AI Spawn success (" + str _points + " points)") )
 
             // Order the group to go do something depending on the current state and personality
-            /*
-                #define STATE_PATROL 0
-                #define STATE_ALERT 1
-                #define STATE_COMBAT 2
-            */
-            /*
             switch (_state) do
             {
                 case STATE_PATROL: {}; // go patrol
                 case STATE_ALERT: {};
                 case STATE_COMBAT: {}; // go move to detected players
             };
-            */
         };
-    };
+    };*/
 
     DEBUG_MSG("AI Loop Sleep")
     sleep AI_SLEEP;

@@ -4,10 +4,10 @@ _psn2 = +([_this, 1] call bis_fnc_param);
 _color = [_this, 2, "#(rgb,8,8,3)color(1,1,1,1)", [[],""]] call bis_fnc_param;
 _width = [_this , 3, 1, [0]] call bis_fnc_param;
 
+_dir = [_psn1, _psn2] call BIS_fnc_dirTo;
 _psn1 set [2, 0];
 _psn2 set [2, 0];
-_center = (_psn1 vectorAdd _psn2) vectorMultiply 0.5;
-_dir = [_psn1, _psn2] call BIS_fnc_dirTo;
+_center = (_psn1 vectorAdd _psn2) vectorMultiply 0.5; // Maybe we should make a mean 2d function?
 
 _psn1 resize 2;
 _psn2 resize 2;

@@ -8,14 +8,14 @@
     0: ARRAY                 - An array of OBJECTS
     1: NUMBER                - maximum distance another point can be away to be considered part of a cluster
 
-    return: ARRAY            - An array of arrays containing player clusters
+    return: ARRAY            - An array of arrays containing player clusters // Can we return just 2d positions instead?
 */
 
-private ["_data","_maxDistance","_minPoints","_clusters","_index"];
-_data = _this select 0;
+private ["_units","_maxDistance","_minPoints","_clusters","_index","_unvisited"];
+_units = _this select 0;
 _maxDistance = _this select 1; // 50m is the max range of STHUD
-_maxDistance = _maxDistance ^ 2; // Square it so we don't need to sqr distance checks
-_minPoints = 0; // Not implemented, we don't need to differentiate between noise and clusters yet
+_maxDistance = _maxDistance ^ 2; // Square it so we don't need to sqrt distance checks
+_minPoints = 1; // Not implemented, we don't need to differentiate between noise and clusters yet
 
 _index = -1;
 _clusters = [];
@@ -44,7 +44,7 @@ _fnc_expandCluster =
             // Check this neighbor's neighbors
             private "_neighborNearPoints";
             _neighborNearPoints = _x call _fnc_regionQuery;
-            if (count _neighborNearPoints >= _minPoints) then
+            if (count _neighborNearPoints > _minPoints) then
             {
                 [_x, _neighborNearPoints] call _fnc_expandCluster;
             };
@@ -66,15 +66,15 @@ _fnc_regionQuery =
     private ["_points","_pointPsn","_psn"];
     _points = [_this];
     _pointPsn = getPosWorld _this;
-    _pointPsn set [2, 0];
+    _pointPsn resize 2; // 2D
     {
         _psn = getPosWorld _x;
-        _psn set [2, 0];
+        _psn resize 2; // 2D
         if (_pointPsn distanceSqr _psn <= _maxDistance) then
         {
             _points pushBack _x;
         }; true
-    } count _data;
+    } count _units;
     _points
 };
 
@@ -107,11 +107,11 @@ _fnc_regionQuery =
         // Check for neighbours of this point's neighbors and add them
         [_x, _nearPoints] call _fnc_expandCluster;
     }; true
-} count _data;
+} count _units;
 
 // Remove everyone's visited status
 {
     _x setVariable ["_unvisited", nil]; true
-} count _data;
+} count _units;
 
 _clusters

@@ -14,5 +14,5 @@ _unit = [_this, 0] call BIS_fnc_param;
 #define CONFIG_PATH (configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type")
 
 {
-    if (getNumber CONFIG_PATH == NVG_TYPE) then {_unit unlinkItem _x};
+    if (getNumber CONFIG_PATH == NVG_TYPE) then {_unit unlinkItem _x}; true
 } count assignedItems _unit;

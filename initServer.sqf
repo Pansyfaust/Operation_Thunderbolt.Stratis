@@ -1,4 +1,4 @@
-#include "scripts\defines.hpp"
+#include "thunderbolt\scripts\defines.hpp"
 
 DEBUG_MSG("Started")
 #ifdef DEBUG

@@ -1,9 +1,12 @@
-#include "scripts\defines.hpp"
+#include "thunderbolt\scripts\defines.hpp"
 
 // Make the player blind and deaf
-private "_layer";
+/*private "_layer";
 _layer = "akpBlack" call bis_fnc_rscLayer;
 _layer cutText ["", "BLACK FADED", 10e10]; // Can we use cutTitle?
+*/
+titleCut ["", "BLACK OUT", 1];
+startLoadingScreen [""];
 0 fadeSound 0;
 
 #ifdef DEBUG
@@ -34,13 +37,16 @@ player enableSimulation false;
 // Start the mission. Play some cool effects and stuff
 waitUntil {time > 0};
 waitUntil {!(isNull ([] call BIS_fnc_displayMission))}; // Waituntil the main game display is active
-
+endLoadingScreen;
 1 fadeSound 1;
 player enableSimulation true;
+call BIS_fnc_VRFadeIn;
+
+/*
 ("akpStatic" call bis_fnc_rscLayer) cutRsc ["RscStatic","plain"];
 sleep 0.5;
 _layer cutText ["", "BLACK IN", 0];
-sleep 1;
+sleep 1;*/
 //_side execVM "scripts\typeText_init.sqf";
 
 //call BIS_fnc_VRFadeIn

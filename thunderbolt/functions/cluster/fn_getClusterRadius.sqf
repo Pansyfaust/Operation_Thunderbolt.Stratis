@@ -17,11 +17,12 @@ _radius = 0;
     private ["_psn","_distance"];
     _psn = getPosWorld _x;
     _psn resize 2; // 2D Position
-    _distance = _psn distance _center;
+    _distance = _psn distanceSqr _center;
     if (_distance > _radius) then
     {
         _radius = _distance;
     };
-} forEach _list;
+    true
+} count _list;
 
-_radius
+sqrt _radius

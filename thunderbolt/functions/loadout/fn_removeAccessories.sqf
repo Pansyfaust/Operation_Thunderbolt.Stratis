@@ -29,20 +29,20 @@ _weapons = [_this, 2, [PRIMARY_WEP, SECONDARY_WEP, HANDGUN_WEP], [[]]] call BIS_
 if (PRIMARY_WEP in _weapons) then
 {
     {
-        if (getNumber CONFIG_PATH in _types) then {_unit removePrimaryWeaponItem _x};
+        if (getNumber CONFIG_PATH in _types) then {_unit removePrimaryWeaponItem _x}; true
     } count primaryWeaponItems _unit;
 };
 
 if (SECONDARY_WEP in _weapons)then
 {
     {
-        if (getNumber CONFIG_PATH in _types) then {_unit removeSecondaryWeaponItem _x};
+        if (getNumber CONFIG_PATH in _types) then {_unit removeSecondaryWeaponItem _x}; true
     } count secondaryWeaponItems _unit;
 };
 
 if (HANDGUN_WEP in _weapons) then
 {
     {
-        if (getNumber CONFIG_PATH in _types) then {_unit removeHandgunItem _x};
+        if (getNumber CONFIG_PATH in _types) then {_unit removeHandgunItem _x}; true
     } count handgunItems _unit;
 }

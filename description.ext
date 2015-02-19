@@ -23,21 +23,6 @@ class Header
 
 #include "configs\RemainsCollector.hpp"
 
-class CfgTaskDescriptions
-{
-    #include "configs\CfgTaskDescriptions.hpp"
-};
-
-class CfgDebriefing
-{
-    #include "configs\CfgDebriefing.hpp"
-};
-
-class CfgFunctions
-{
-    #include "configs\CfgFunctions.hpp"
-};
-
 class CfgRespawnTemplates
 {
     #include "configs\CfgRespawnTemplates.hpp"
@@ -48,10 +33,25 @@ class Params
     #include "configs\params.hpp"
 };
 
+class CfgFunctions
+{
+    #include "thunderbolt\CfgFunctions.hpp"
+};
+
+class CfgTaskDescriptions
+{
+    #include "thunderbolt\CfgTaskDescriptions.hpp"
+};
+
+class CfgDebriefing
+{
+    #include "thunderbolt\CfgDebriefing.hpp"
+};
+
 class CfgThunderbolt
 {
-    #include "configs\thunderbolt\aiPersonality.hpp"
-    #include "configs\thunderbolt\aiComposition.hpp"
-    #include "configs\thunderbolt\aiFactions.hpp"
-    #include "configs\thunderbolt\aiSpawning.hpp"
+    #include "thunderbolt\configs\aiPersonality.hpp"
+    #include "thunderbolt\configs\aiComposition.hpp"
+    #include "thunderbolt\configs\aiFactions.hpp"
+    #include "thunderbolt\configs\aiSpawning.hpp"
 };

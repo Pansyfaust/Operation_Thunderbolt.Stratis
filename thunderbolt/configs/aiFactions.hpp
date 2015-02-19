@@ -3,12 +3,12 @@ class aiFactions
     class Default
     {
         name = "Default";
-        factionClass[] = {}; // CfgFaction classes, multiple can be used for auto inclusion        
+        factionClass[] = {}; // CfgFaction classes, multiple can be used for auto inclusion
         findUnits = 0; // Automatically include units that belong to the faction(s), you have to use whitelists otherwise
 
         class Category // Abstract class
         {
-            condition = "false"; // Conditiono auto include units into this category, if blank, no units will be auto included
+            condition = "false"; // Condition to auto include units into this category, if blank, no units will be auto included
                                // the config entry is passed to the called compiled string
             cost = 1; // Per man if group of cost of the vehicle without crew
             isGroup = 0; // 1: use CfgGroups, 0: use CfgVehicles

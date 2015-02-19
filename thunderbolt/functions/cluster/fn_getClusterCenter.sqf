@@ -11,9 +11,8 @@ _list = _this select 0;
 _count = 0;
 _mean = [0,0,0];
 
-{
-    _count = _count + 1;
-    _mean = _mean vectorAdd getPosWorld _x;
+_count = {
+    _mean = _mean vectorAdd getPosWorld _x; true
 } count _list;
 
 // Avoid dividing by zero

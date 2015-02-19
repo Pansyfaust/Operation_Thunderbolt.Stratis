@@ -1,3 +1,12 @@
+/*
+    compile all STRINGS before using! make an array of all ai Spawn Types
+
+    [
+        [NUMBER: size, NUMBER: max attempts, SCRIPT: psn function, SCRIPT: spawn function], ...
+    ]
+
+*/
+
 class aiSpawning
 {
     class Default

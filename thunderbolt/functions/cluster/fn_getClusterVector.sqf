@@ -11,14 +11,14 @@ _list = [_this, 0] call BIS_fnc_param;
 _count = 0;
 _vector = [0,0,0];
 
+_count =
 {
-    _count = _count + 1;
-    _vector = _vector vectorAdd velocity _x;
+    _vector = _vector vectorAdd velocity _x; true
 } count _list;
 
 // Avoid dividing by zero
 if (_count > 0) then
-{    
+{
     _vector = _vector vectorMultiply (1 / _count);
 };
 
