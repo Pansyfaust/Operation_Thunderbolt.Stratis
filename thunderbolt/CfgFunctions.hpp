@@ -3,13 +3,13 @@ class TB
     // Generic functions for any kind of vehicle
     class Vehicle
     {
-        file = "functions\vehicle";
+        file = "thunderbolt\functions\vehicle";
     };
 
     // Functions to interpret object data to help the AI make decisions
     class Cluster
     {
-        file = "functions\cluster";
+        file = "thunderbolt\functions\cluster";
         class getClusterCenter {}; // Done
         class getClusterRadius {}; // Done
         class getClusters {}; // Done
@@ -19,7 +19,7 @@ class TB
     // Functions to find spots on a map to spawn stuff now what we know where players are going
     class Map
     {
-        file = "functions\map";
+        file = "thunderbolt\functions\map";
         class offMapPos {}; // WIP
         class isObscuredPos {}; // Dummy
         class randomMapPos {}; // Done
@@ -35,17 +35,17 @@ class TB
 
     class Misc
     {
-        file = "functions\misc";
+        file = "thunderbolt\functions\misc";
         class pack2Dbin {}; //WIP
         class enumParser {};
         class getPos {}; // Done
         class weightedRandom {}; // Done
     };
-    
+
     // Functions to generate tasks now that we've found good spots
     class Tasks
     {
-        file = "functions\tasks";
+        file = "thunderbolt\functions\tasks";
         class generateTask {}; // WIP
         class initCV {}; // WIP
     };
@@ -56,7 +56,7 @@ class TB
     // createVehicleCrew command spawns config default crew for vehicles (including side!)
     class Spawn
     {
-        file = "functions\spawn";
+        file = "thunderbolt\functions\spawn";
         class spawnAirAssault {}; // Dummy
         class spawnMines {}; // Done
         class spawnObjects {}; // Done
@@ -66,7 +66,7 @@ class TB
     // BIS also has functions for these but they're pretty basic/shitty
     class Group
     {
-        file = "functions\group";
+        file = "thunderbolt\functions\group";
         class generateWaypoints {};
         class getTargets {}; // Done
         class sortVehicleOrMan {}; // Done
@@ -75,7 +75,7 @@ class TB
     // Functions to aid the AI commander loop
     class AI
     {
-        file = "functions\ai";
+        file = "thunderbolt\functions\ai";
         class getFactionTable {}; //WIP
         class spawnLogic {}; // Done
     };
@@ -83,7 +83,7 @@ class TB
     // Functions to help edit loadouts
     class Loadout
     {
-        file = "functions\loadout";
+        file = "thunderbolt\functions\loadout";
         class removeAccessories {};
         class removeAll {};
         class removeNVG {};
@@ -92,7 +92,7 @@ class TB
     // These functions are only executed if DEBUG is defined
     class Debug
     {
-        file = "functions\debug";
+        file = "thunderbolt\functions\debug";
         class debugGizmo {}; // Done
         class debugMarker {}; // Done
         class debugMessage {}; // Done
